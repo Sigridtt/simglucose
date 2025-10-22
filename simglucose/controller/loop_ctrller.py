@@ -37,7 +37,7 @@ class LoopController(Controller):
         action = self._loop_policy(datetime, pname, meal, observation.CGM, sample_time)
         return action
 
-    def _loop_policy(self, datetime, name, meal, glucose, env_sample_time):
+    def _loop_policy(self, datetime, name, meal, glucose, env_sample_time, TDD=None):
         if any(self.quest.Name.str.match(name)):
             quest = self.quest[self.quest.Name.str.match(name)]
             params = self.patient_params[self.patient_params.Name.str.match(
@@ -50,7 +50,8 @@ class LoopController(Controller):
                                  columns=['Name', 'CR', 'CF', 'TDI', 'Age'])
             u2ss = 1.43  # unit: pmol/(L*kg)
             BW = 57.0  # unit: kg
-            TDD = 50
+            if TDD is None:
+                TDD = 50
 
         if self.use_tdd_settings:
             basal_pr_hr, isf, cr = self.get_therapy_settings_from_tdd(TDD)
