@@ -69,9 +69,8 @@ class LoopController(Controller):
             meal = 0
 
         # Load previous observations for patient and add the new CGM observation
-        # TODO: Shouldn't observations be fetched after we add the new glucose and meal reading?
-        df_observations = self.get_patient_observations(key=name)
         self.add_patient_observation(name, datetime, glucose, np.nan, np.nan, meal_grams)
+        df_observations = self.get_patient_observations(key=name)
 
         # If observations for < 3 hrs, return basal=scheduled basal and bolus=0
         if len(df_observations) < (3 * 60 // env_sample_time):
