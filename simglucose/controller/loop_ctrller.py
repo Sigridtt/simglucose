@@ -69,12 +69,11 @@ class LoopController(Controller):
             meal = 0
 
         # Load previous observations for patient and add the new CGM observation
-        self.add_patient_observation(name, datetime, glucose, np.nan, np.nan, meal_grams)
-        df_observations = self.get_patient_observations(key=name)
+        df_observations = self.add_patient_observation(name, datetime, glucose, np.nan, np.nan, meal_grams, TDD)
 
         # If observations for < 3 hrs, return basal=scheduled basal and bolus=0
         if len(df_observations) < (3 * 60 // env_sample_time):
-            self.add_patient_observation(name, datetime, glucose, basal_pr_hr, 0, meal_grams)
+            self.add_patient_observation(name, datetime, glucose, basal_pr_hr, 0, meal_grams, TDD)
             return Action(basal=basal, bolus=0)
 
         # Get data input for the Loop Algorithm insulin recommendation
@@ -99,7 +98,7 @@ class LoopController(Controller):
             bolus_rec = 0.0
 
         # Overwrite patient data iteration with insulin action
-        self.add_patient_observation(name, datetime, glucose, basal=basal_rec, bolus=bolus_rec, carbs=meal_grams)
+        self.add_patient_observation(name, datetime, glucose, basal=basal_rec, bolus=bolus_rec, carbs=meal_grams, TDD=TDD)
 
         # This is to convert basal (U/hr) and bolus (U) to insulin rate (U/min), as required by the simulation env
         action = Action(basal=basal_rec / 60, bolus=bolus_rec / env_sample_time)
@@ -108,12 +107,25 @@ class LoopController(Controller):
     def reset(self):
         pass
 
-    def get_patient_observations(self, key: str) -> pd.DataFrame:
+    def get_patient_observations(self, key: str, cgm, datetime, TDD) -> pd.DataFrame:
         if key in self.observations:
             return self.observations[key]
-        return pd.DataFrame(columns=["CGM", "basal", "bolus", "carbs"], index=pd.DatetimeIndex([], name="date"))
 
-    def add_patient_observation(self, key: str, datetime, cgm, basal, bolus, carbs):
+        # Generate 5-minute interval index ending at last_datetime
+        idx = pd.date_range(end=datetime, periods=12*8, freq="5min")
+        basal_rate, _, _ = self.get_therapy_settings_from_tdd(TDD)
+
+        # Generate the initial dataframe to correctly compute loop decisions from start
+        initial_df = pd.DataFrame({
+            "CGM": cgm,
+            "basal": basal_rate,
+            "bolus": 0,
+            "carbs": 0,
+        }, index=idx)
+        initial_df.index.name = "date"
+        return initial_df
+
+    def add_patient_observation(self, key: str, datetime, cgm, basal, bolus, carbs, TDD):
         """Add a row to the state dataframe under the given key."""
         new_data = {
             "CGM": cgm,
@@ -121,7 +133,8 @@ class LoopController(Controller):
             "bolus": bolus,
             "carbs": np.nan if carbs <= 0 else carbs
         }
-        df = self.get_patient_observations(key)
+        df = self.get_patient_observations(key, cgm, datetime, TDD)
         df.loc[datetime] = new_data
         self.observations[key] = df
+        return df
 
