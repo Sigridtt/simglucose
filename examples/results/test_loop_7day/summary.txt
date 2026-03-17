@@ -1,0 +1,5 @@
+=== Results: adult#001, 7 days (LoopController) ===
+  Time in range (70-180) : 93.6 %
+  Time above 180         : 6.4 %
+  Time below 70          : 0.0 %
+  Risk Index             : 2.3115

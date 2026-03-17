@@ -1,0 +1,12 @@
+=== Results: adult#001, 7 days (Adaptive ISF) ===
+  Time in range (70-180) : 93.6 %
+  Time above 180         : 6.4 %
+  Time below 70          : 0.0 %
+  Risk Index             : 2.3009
+
+=== ISF adaptation history ===
+  2018-01-03 08:00:00  ISF 35.702 -> 34.842 mg/dL/U
+  2018-01-04 08:00:00  ISF 34.842 -> 34.866 mg/dL/U
+  2018-01-05 08:00:00  ISF 34.866 -> 34.908 mg/dL/U
+  2018-01-06 08:00:00  ISF 34.908 -> 35.078 mg/dL/U
+  2018-01-07 08:00:00  ISF 35.078 -> 35.078 mg/dL/U
