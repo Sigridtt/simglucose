@@ -3,7 +3,8 @@ from simglucose.simulation.user_interface import simulate
 from simglucose.controller.loop_ctrller import LoopController
 from simglucose.simulation.scenario import CustomScenario
 import os
-
+import sys
+sys.dont_write_bytecode = True  # avoid .pyc files to prevent confusion with the "real" Loop code in the LoopToPython package
 START_TIME = datetime(2018, 1, 1, 8, 0, 0)
 
 scenario = CustomScenario(

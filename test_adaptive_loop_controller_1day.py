@@ -3,7 +3,15 @@ from simglucose.simulation.user_interface import simulate
 from simglucose.controller.adaptive_loop_ctrller import AdaptiveLoopController
 from simglucose.simulation.scenario import CustomScenario
 import os
+import sys
+import logging
 
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(name)s - %(message)s'
+)
+
+sys.dont_write_bytecode = True  # avoid .pyc files to prevent confusion with the "real" Loop code in the LoopToPython package
 START_TIME = datetime(2018, 1, 1, 8, 0, 0)
 
 scenario = CustomScenario(
@@ -12,15 +20,18 @@ scenario = CustomScenario(
 )
 
 controller = AdaptiveLoopController(
-    target=110,
+    target=100,
     recommendation_type='automaticBolus',
     use_tdd_settings=True,
     insulin_type='novolog',
     adaptation_interval_hours=24,
     n_autotune_iterations=1,
+    debug_timing=True,
+    debug_every_steps=1,
+    slow_step_seconds=1.0,
 )
 
-SAVE_PATH = os.path.join(os.path.dirname(__file__), "examples", "results", "test_adaptive", "test3")
+SAVE_PATH = os.path.join(os.path.dirname(__file__), "examples", "results", "test_adaptive", "two-layer_1st")
 os.makedirs(SAVE_PATH, exist_ok=True)
 
 results = simulate(
