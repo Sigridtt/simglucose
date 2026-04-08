@@ -1,0 +1,230 @@
+Illness Scenario Test (Loop vs Adaptive)
+================================================================================
+Patients: adolescent#001, adolescent#002, adolescent#003, adolescent#004, adolescent#005, adolescent#006, adolescent#007, adolescent#008, adolescent#009, adolescent#010, adult#001, adult#002, adult#003, adult#004, adult#005, adult#006, adult#007, adult#008, adult#009, adult#010, child#001, child#002, child#003, child#004, child#005, child#006, child#007, child#008, child#009, child#010
+Controllers: LoopController, AdaptiveLoopController
+
+adolescent#001 | Loop: TIR=100.00%  TAR=0.00%  TBR=0.00%  Risk Index=0.8403
+adolescent#001 | Adaptive: TIR=100.00%  TAR=0.00%  TBR=0.00%  Risk Index=0.4647
+adolescent#001 | Delta (Adaptive-Loop): TIR=+0.00%  TAR=+0.00%  TBR=+0.00%  Risk Index=-0.3756
+
+adolescent#002 | Loop: TIR=27.52%  TAR=22.29%  TBR=50.19%  Risk Index=31.9655
+adolescent#002 | Adaptive: TIR=28.56%  TAR=21.30%  TBR=50.14%  Risk Index=31.8027
+adolescent#002 | Delta (Adaptive-Loop): TIR=+1.04%  TAR=-0.99%  TBR=-0.05%  Risk Index=-0.1628
+
+adolescent#003 | Loop: TIR=88.02%  TAR=11.98%  TBR=0.00%  Risk Index=2.8297
+adolescent#003 | Adaptive: TIR=90.21%  TAR=9.79%  TBR=0.00%  Risk Index=2.5158
+adolescent#003 | Delta (Adaptive-Loop): TIR=+2.18%  TAR=-2.18%  TBR=+0.00%  Risk Index=-0.3139
+
+adolescent#004 | Loop: TIR=81.73%  TAR=18.27%  TBR=0.00%  Risk Index=3.9098
+adolescent#004 | Adaptive: TIR=83.36%  TAR=16.19%  TBR=0.45%  Risk Index=3.5752
+adolescent#004 | Delta (Adaptive-Loop): TIR=+1.64%  TAR=-2.08%  TBR=+0.45%  Risk Index=-0.3345
+
+adolescent#005 | Loop: TIR=71.86%  TAR=28.14%  TBR=0.00%  Risk Index=5.9466
+adolescent#005 | Adaptive: TIR=72.38%  TAR=27.62%  TBR=0.00%  Risk Index=5.8701
+adolescent#005 | Delta (Adaptive-Loop): TIR=+0.52%  TAR=-0.52%  TBR=+0.00%  Risk Index=-0.0765
+
+adolescent#006 | Loop: TIR=91.37%  TAR=8.63%  TBR=0.00%  Risk Index=2.1936
+adolescent#006 | Adaptive: TIR=92.91%  TAR=7.09%  TBR=0.00%  Risk Index=2.0063
+adolescent#006 | Delta (Adaptive-Loop): TIR=+1.54%  TAR=-1.54%  TBR=+0.00%  Risk Index=-0.1872
+
+adolescent#007 | Loop: TIR=62.04%  TAR=36.52%  TBR=1.44%  Risk Index=9.1643
+adolescent#007 | Adaptive: TIR=62.16%  TAR=36.45%  TBR=1.39%  Risk Index=9.1425
+adolescent#007 | Delta (Adaptive-Loop): TIR=+0.12%  TAR=-0.07%  TBR=-0.05%  Risk Index=-0.0218
+
+adolescent#008 | Loop: TIR=65.93%  TAR=33.47%  TBR=0.60%  Risk Index=7.8240
+adolescent#008 | Adaptive: TIR=66.18%  TAR=33.18%  TBR=0.64%  Risk Index=7.7278
+adolescent#008 | Delta (Adaptive-Loop): TIR=+0.25%  TAR=-0.30%  TBR=+0.05%  Risk Index=-0.0962
+
+adolescent#009 | Loop: TIR=83.19%  TAR=16.81%  TBR=0.00%  Risk Index=3.3026
+adolescent#009 | Adaptive: TIR=86.21%  TAR=13.79%  TBR=0.00%  Risk Index=2.9674
+adolescent#009 | Delta (Adaptive-Loop): TIR=+3.03%  TAR=-3.03%  TBR=+0.00%  Risk Index=-0.3352
+
+adolescent#010 | Loop: TIR=97.22%  TAR=2.60%  TBR=0.17%  Risk Index=2.0687
+adolescent#010 | Adaptive: TIR=98.19%  TAR=0.87%  TBR=0.94%  Risk Index=1.8885
+adolescent#010 | Delta (Adaptive-Loop): TIR=+0.97%  TAR=-1.74%  TBR=+0.77%  Risk Index=-0.1802
+
+adult#001 | Loop: TIR=92.04%  TAR=7.96%  TBR=0.00%  Risk Index=2.8621
+adult#001 | Adaptive: TIR=93.83%  TAR=6.17%  TBR=0.00%  Risk Index=2.4622
+adult#001 | Delta (Adaptive-Loop): TIR=+1.79%  TAR=-1.79%  TBR=+0.00%  Risk Index=-0.3998
+
+adult#002 | Loop: TIR=98.61%  TAR=1.39%  TBR=0.00%  Risk Index=1.3909
+adult#002 | Adaptive: TIR=99.78%  TAR=0.22%  TBR=0.00%  Risk Index=1.2553
+adult#002 | Delta (Adaptive-Loop): TIR=+1.17%  TAR=-1.17%  TBR=+0.00%  Risk Index=-0.1356
+
+adult#003 | Loop: TIR=96.26%  TAR=3.74%  TBR=0.00%  Risk Index=1.8673
+adult#003 | Adaptive: TIR=97.92%  TAR=2.08%  TBR=0.00%  Risk Index=1.4952
+adult#003 | Delta (Adaptive-Loop): TIR=+1.66%  TAR=-1.66%  TBR=+0.00%  Risk Index=-0.3721
+
+adult#004 | Loop: TIR=87.83%  TAR=12.17%  TBR=0.00%  Risk Index=2.4361
+adult#004 | Adaptive: TIR=89.54%  TAR=10.46%  TBR=0.00%  Risk Index=2.1377
+adult#004 | Delta (Adaptive-Loop): TIR=+1.71%  TAR=-1.71%  TBR=+0.00%  Risk Index=-0.2984
+
+adult#005 | Loop: TIR=95.12%  TAR=4.88%  TBR=0.00%  Risk Index=2.0433
+adult#005 | Adaptive: TIR=96.83%  TAR=3.17%  TBR=0.00%  Risk Index=1.6606
+adult#005 | Delta (Adaptive-Loop): TIR=+1.71%  TAR=-1.71%  TBR=+0.00%  Risk Index=-0.3827
+
+adult#006 | Loop: TIR=94.37%  TAR=5.63%  TBR=0.00%  Risk Index=2.4155
+adult#006 | Adaptive: TIR=95.49%  TAR=3.99%  TBR=0.52%  Risk Index=2.1412
+adult#006 | Delta (Adaptive-Loop): TIR=+1.12%  TAR=-1.64%  TBR=+0.52%  Risk Index=-0.2743
+
+adult#007 | Loop: TIR=99.83%  TAR=0.17%  TBR=0.00%  Risk Index=1.3129
+adult#007 | Adaptive: TIR=100.00%  TAR=0.00%  TBR=0.00%  Risk Index=0.8678
+adult#007 | Delta (Adaptive-Loop): TIR=+0.17%  TAR=-0.17%  TBR=+0.00%  Risk Index=-0.4451
+
+adult#008 | Loop: TIR=99.03%  TAR=0.97%  TBR=0.00%  Risk Index=1.0835
+adult#008 | Adaptive: TIR=99.78%  TAR=0.22%  TBR=0.00%  Risk Index=0.8241
+adult#008 | Delta (Adaptive-Loop): TIR=+0.74%  TAR=-0.74%  TBR=+0.00%  Risk Index=-0.2594
+
+adult#009 | Loop: TIR=66.25%  TAR=16.29%  TBR=17.46%  Risk Index=7.0551
+adult#009 | Adaptive: TIR=30.50%  TAR=5.50%  TBR=64.00%  Risk Index=36.2699
+adult#009 | Delta (Adaptive-Loop): TIR=-35.76%  TAR=-10.79%  TBR=+46.54%  Risk Index=+29.2149
+
+adult#010 | Loop: TIR=84.38%  TAR=15.62%  TBR=0.00%  Risk Index=3.5504
+adult#010 | Adaptive: TIR=87.40%  TAR=12.60%  TBR=0.00%  Risk Index=3.1690
+adult#010 | Delta (Adaptive-Loop): TIR=+3.03%  TAR=-3.03%  TBR=+0.00%  Risk Index=-0.3814
+
+child#001 | Loop: TIR=79.94%  TAR=14.46%  TBR=5.60%  Risk Index=5.0220
+child#001 | Adaptive: TIR=80.29%  TAR=14.51%  TBR=5.21%  Risk Index=4.9897
+child#001 | Delta (Adaptive-Loop): TIR=+0.35%  TAR=+0.05%  TBR=-0.40%  Risk Index=-0.0323
+
+child#002 | Loop: TIR=87.03%  TAR=10.81%  TBR=2.16%  Risk Index=3.5623
+child#002 | Adaptive: TIR=88.57%  TAR=7.34%  TBR=4.09%  Risk Index=3.4564
+child#002 | Delta (Adaptive-Loop): TIR=+1.54%  TAR=-3.47%  TBR=+1.93%  Risk Index=-0.1059
+
+child#003 | Loop: TIR=25.49%  TAR=9.84%  TBR=64.67%  Risk Index=38.4800
+child#003 | Adaptive: TIR=25.89%  TAR=9.45%  TBR=64.67%  Risk Index=38.2973
+child#003 | Delta (Adaptive-Loop): TIR=+0.40%  TAR=-0.40%  TBR=+0.00%  Risk Index=-0.1828
+
+child#004 | Loop: TIR=92.44%  TAR=3.50%  TBR=4.07%  Risk Index=2.7825
+child#004 | Adaptive: TIR=92.16%  TAR=3.37%  TBR=4.46%  Risk Index=2.7272
+child#004 | Delta (Adaptive-Loop): TIR=-0.27%  TAR=-0.12%  TBR=+0.40%  Risk Index=-0.0553
+
+child#005 | Loop: TIR=79.82%  TAR=1.49%  TBR=18.70%  Risk Index=4.4516
+child#005 | Adaptive: TIR=79.25%  TAR=1.24%  TBR=19.51%  Risk Index=4.6373
+child#005 | Delta (Adaptive-Loop): TIR=-0.57%  TAR=-0.25%  TBR=+0.82%  Risk Index=+0.1857
+
+child#006 | Loop: TIR=74.93%  TAR=18.99%  TBR=6.07%  Risk Index=5.6828
+child#006 | Adaptive: TIR=75.40%  TAR=18.97%  TBR=5.63%  Risk Index=5.4958
+child#006 | Delta (Adaptive-Loop): TIR=+0.47%  TAR=-0.02%  TBR=-0.45%  Risk Index=-0.1871
+
+child#007 | Loop: TIR=98.34%  TAR=0.42%  TBR=1.24%  Risk Index=1.8669
+child#007 | Adaptive: TIR=96.58%  TAR=0.20%  TBR=3.22%  Risk Index=1.9790
+child#007 | Delta (Adaptive-Loop): TIR=-1.76%  TAR=-0.22%  TBR=+1.98%  Risk Index=+0.1122
+
+child#008 | Loop: TIR=13.09%  TAR=15.35%  TBR=71.56%  Risk Index=52.0542
+child#008 | Adaptive: TIR=13.24%  TAR=15.27%  TBR=71.49%  Risk Index=51.9993
+child#008 | Delta (Adaptive-Loop): TIR=+0.15%  TAR=-0.07%  TBR=-0.07%  Risk Index=-0.0548
+
+child#009 | Loop: TIR=89.86%  TAR=10.14%  TBR=0.00%  Risk Index=2.1597
+child#009 | Adaptive: TIR=90.50%  TAR=9.50%  TBR=0.00%  Risk Index=2.1725
+child#009 | Delta (Adaptive-Loop): TIR=+0.64%  TAR=-0.64%  TBR=+0.00%  Risk Index=+0.0128
+
+child#010 | Loop: TIR=71.46%  TAR=25.37%  TBR=3.17%  Risk Index=8.1648
+child#010 | Adaptive: TIR=71.44%  TAR=25.56%  TBR=3.00%  Risk Index=8.1157
+child#010 | Delta (Adaptive-Loop): TIR=-0.02%  TAR=+0.20%  TBR=-0.17%  Risk Index=-0.0491
+
+
+Combined comparison metrics:
+                Loop_TIR  Loop_TAR  Loop_TBR  Loop_RiskIndex  Adaptive_TIR  Adaptive_TAR  Adaptive_TBR  Adaptive_RiskIndex  Delta_TIR  Delta_TAR  Delta_TBR  Delta_RiskIndex
+adolescent#001  100.0000    0.0000    0.0000          0.8403      100.0000        0.0000        0.0000              0.4647     0.0000     0.0000     0.0000          -0.3756
+adolescent#002   27.5229   22.2911   50.1860         31.9655       28.5643       21.2993       50.1364             31.8027     1.0414    -0.9918    -0.0496          -0.1628
+adolescent#003   88.0238   11.9762    0.0000          2.8297       90.2058        9.7942        0.0000              2.5158     2.1820    -2.1820     0.0000          -0.3139
+adolescent#004   81.7258   18.2742    0.0000          3.9098       83.3623       16.1914        0.4463              3.5752     1.6365    -2.0828     0.4463          -0.3345
+adolescent#005   71.8572   28.1428    0.0000          5.9466       72.3779       27.6221        0.0000              5.8701     0.5207    -0.5207     0.0000          -0.0765
+adolescent#006   91.3712    8.6288    0.0000          2.1936       92.9085        7.0915        0.0000              2.0063     1.5373    -1.5373     0.0000          -0.1872
+adolescent#007   62.0382   36.5237    1.4381          9.1643       62.1622       36.4493        1.3885              9.1425     0.1240    -0.0744    -0.0496          -0.0218
+adolescent#008   65.9311   33.4738    0.5951          7.8240       66.1790       33.1763        0.6447              7.7278     0.2480    -0.2975     0.0496          -0.0962
+adolescent#009   83.1887   16.8113    0.0000          3.3026       86.2137       13.7863        0.0000              2.9674     3.0250    -3.0250     0.0000          -0.3352
+adolescent#010   97.2229    2.6035    0.1736          2.0687       98.1899        0.8678        0.9422              1.8885     0.9670    -1.7357     0.7687          -0.1802
+adult#001        92.0407    7.9593    0.0000          2.8621       93.8259        6.1741        0.0000              2.4622     1.7853    -1.7853     0.0000          -0.3998
+adult#002        98.6115    1.3885    0.0000          1.3909       99.7768        0.2232        0.0000              1.2553     1.1654    -1.1654     0.0000          -0.1356
+adult#003        96.2559    3.7441    0.0000          1.8673       97.9172        2.0828        0.0000              1.4952     1.6613    -1.6613     0.0000          -0.3721
+adult#004        87.8254   12.1746    0.0000          2.4361       89.5363       10.4637        0.0000              2.1377     1.7109    -1.7109     0.0000          -0.2984
+adult#005        95.1153    4.8847    0.0000          2.0433       96.8262        3.1738        0.0000              1.6606     1.7109    -1.7109     0.0000          -0.3827
+adult#006        94.3714    5.6286    0.0000          2.4155       95.4872        3.9921        0.5207              2.1412     1.1158    -1.6365     0.5207          -0.2743
+adult#007        99.8264    0.1736    0.0000          1.3129      100.0000        0.0000        0.0000              0.8678     0.1736    -0.1736     0.0000          -0.4451
+adult#008        99.0330    0.9670    0.0000          1.0835       99.7768        0.2232        0.0000              0.8241     0.7439    -0.7439     0.0000          -0.2594
+adult#009        66.2534   16.2906   17.4560          7.0551       30.4984        5.5046       63.9970             36.2699   -35.7550   -10.7860    46.5410          29.2149
+adult#010        84.3789   15.6211    0.0000          3.5504       87.4039       12.5961        0.0000              3.1690     3.0250    -3.0250     0.0000          -0.3814
+child#001        79.9405   14.4557    5.6038          5.0220       80.2876       14.5053        5.2070              4.9897     0.3471     0.0496    -0.3967          -0.0323
+child#002        87.0320   10.8108    2.1572          3.5623       88.5693        7.3394        4.0912              3.4564     1.5373    -3.4714     1.9340          -0.1059
+child#003        25.4897    9.8438   64.6665         38.4800       25.8864        9.4471       64.6665             38.2973     0.3967    -0.3967     0.0000          -0.1828
+child#004        92.4374    3.4962    4.0665          2.7825       92.1646        3.3722        4.4632              2.7272    -0.2727    -0.1240     0.3967          -0.0553
+child#005        79.8165    1.4877   18.6958          4.4516       79.2462        1.2398       19.5140              4.6373    -0.5703    -0.2480     0.8182           0.1857
+child#006        74.9318   18.9933    6.0749          5.6828       75.4029       18.9685        5.6286              5.4958     0.4711    -0.0248    -0.4463          -0.1871
+child#007        98.3387    0.4215    1.2398          1.8669       96.5782        0.1984        3.2234              1.9790    -1.7605    -0.2232     1.9836           0.1122
+child#008        13.0920   15.3484   71.5596         52.0542       13.2408       15.2740       71.4852             51.9993     0.1488    -0.0744    -0.0744          -0.0548
+child#009        89.8587   10.1413    0.0000          2.1597       90.5033        9.4967        0.0000              2.1725     0.6447    -0.6447     0.0000           0.0128
+child#010        71.4605   25.3657    3.1738          8.1648       71.4357       25.5641        3.0002              8.1157    -0.0248     0.1984    -0.1736          -0.0491
+
+Full Loop metrics table:
+                70<=BG<=180     BG>180      BG<70     BG>250      BG<50       LBGI      HBGI  Risk Index
+adolescent#001   100.000000   0.000000   0.000000   0.000000   0.000000   0.000507  0.839785    0.840291
+adolescent#002    27.522936  22.291098  50.185966   3.248202  45.945946  26.212201  5.753272   31.965474
+adolescent#003    88.023804  11.976196   0.000000   0.000000   0.000000   0.093340  2.736323    2.829663
+adolescent#004    81.725762  18.274238   0.000000   0.198364   0.000000   0.350982  3.558807    3.909789
+adolescent#005    71.857178  28.142822   0.000000   7.215472   0.000000   0.270859  5.675723    5.946583
+adolescent#006    91.371188   8.628812   0.000000   0.049591   0.000000   0.032955  2.160603    2.193557
+adolescent#007    62.038185  36.523680   1.438135  14.480536   0.000000   0.936921  8.227356    9.164277
+adolescent#008    65.931069  33.473841   0.595091  10.488470   0.000000   0.781695  7.042325    7.824019
+adolescent#009    83.188693  16.811307   0.000000   0.000000   0.000000   0.073240  3.229355    3.302595
+adolescent#010    97.222911   2.603521   0.173568   0.000000   0.000000   0.245818  1.822905    2.068723
+adult#001         92.040665   7.959335   0.000000   0.000000   0.000000   0.338841  2.523218    2.862059
+adult#002         98.611455   1.388545   0.000000   0.000000   0.000000   0.183004  1.207890    1.390894
+adult#003         96.255889   3.744111   0.000000   0.000000   0.000000   0.011641  1.855659    1.867299
+adult#004         87.825440  12.174560   0.000000   0.247954   0.000000   0.018166  2.417962    2.436127
+adult#005         95.115299   4.884701   0.000000   0.000000   0.000000   0.064486  1.978816    2.043302
+adult#006         94.371436   5.628564   0.000000   0.000000   0.000000   0.110881  2.304594    2.415475
+adult#007         99.826432   0.173568   0.000000   0.000000   0.000000   0.040676  1.272210    1.312886
+adult#008         99.032978   0.967022   0.000000   0.000000   0.000000   0.050597  1.032903    1.083500
+adult#009         66.253409  16.290603  17.455988   0.520704   4.487974   3.496319  3.558735    7.055054
+adult#010         84.378874  15.621126   0.000000   0.000000   0.000000   0.174854  3.375547    3.550401
+child#001         79.940491  14.455740   5.603769   3.347384   0.570295   1.708701  3.313320    5.022021
+child#002         87.031986  10.810811   2.157203   0.000000   0.000000   0.963372  2.598934    3.562306
+child#003         25.489710   9.843789  64.666501   3.843293  59.732209  35.097476  3.382561   38.480037
+child#004         92.437392   3.496157   4.066452   0.148773   0.371932   1.723286  1.059217    2.782502
+child#005         79.816514   1.487726  18.695760   0.000000   2.058021   3.793980  0.657641    4.451621
+child#006         74.931813  18.993305   6.074882   4.983883   0.619886   1.438869  4.243964    5.682832
+child#007         98.338706   0.421522   1.239772   0.000000   0.000000   1.241497  0.625361    1.866859
+child#008         13.091991  15.348376  71.559633  11.728242  69.278453  43.886006  8.168151   52.054157
+child#009         89.858666  10.141334   0.000000   0.099182   0.000000   0.364083  1.795615    2.159699
+child#010         71.460451  25.365733   3.173816  13.910241   0.000000   1.229746  6.935012    8.164758
+
+Full Adaptive metrics table:
+                70<=BG<=180     BG>180      BG<70     BG>250      BG<50       LBGI      HBGI  Risk Index
+adolescent#001   100.000000   0.000000   0.000000   0.000000   0.000000   0.012418  0.452286    0.464704
+adolescent#002    28.564344  21.299281  50.136375   3.049839  45.896355  26.183317  5.619336   31.802653
+adolescent#003    90.205802   9.794198   0.000000   0.000000   0.000000   0.162149  2.353654    2.515803
+adolescent#004    83.362261  16.191421   0.446318   0.000000   0.000000   0.460167  3.115078    3.575244
+adolescent#005    72.377882  27.622118   0.000000   6.893132   0.000000   0.322597  5.547533    5.870130
+adolescent#006    92.908505   7.091495   0.000000   0.000000   0.000000   0.074394  1.931926    2.006320
+adolescent#007    62.162162  36.449293   1.388545  14.654104   0.000000   0.877788  8.264697    9.142485
+adolescent#008    66.179023  33.176296   0.644681  10.488470   0.000000   0.742861  6.984947    7.727808
+adolescent#009    86.213737  13.786263   0.000000   0.000000   0.000000   0.130628  2.836784    2.967411
+adolescent#010    98.189933   0.867840   0.942227   0.000000   0.000000   0.536020  1.352522    1.888542
+adult#001         93.825936   6.174064   0.000000   0.000000   0.000000   0.489052  1.973164    2.462216
+adult#002         99.776841   0.223159   0.000000   0.000000   0.000000   0.389344  0.865941    1.255284
+adult#003         97.917183   2.082817   0.000000   0.000000   0.000000   0.052939  1.442263    1.495201
+adult#004         89.536325  10.463675   0.000000   0.099182   0.000000   0.052689  2.085005    2.137694
+adult#005         96.826184   3.173816   0.000000   0.000000   0.000000   0.139120  1.521462    1.660582
+adult#006         95.487230   3.992065   0.520704   0.000000   0.000000   0.303566  1.837597    2.141163
+adult#007        100.000000   0.000000   0.000000   0.000000   0.000000   0.158119  0.709701    0.867820
+adult#008         99.776841   0.223159   0.000000   0.000000   0.000000   0.148966  0.675085    0.824052
+adult#009         30.498388   5.504587  63.997025   0.000000  58.963551  34.421027  1.848881   36.269908
+adult#010         87.403918  12.596082   0.000000   0.000000   0.000000   0.266690  2.902320    3.169010
+child#001         80.287627  14.505331   5.207042   3.322589   0.719068   1.660601  3.329070    4.989671
+child#002         88.569303   7.339450   4.091247   0.000000   0.000000   1.230784  2.225604    3.456388
+child#003         25.886437   9.447062  64.666501   3.520952  59.806596  35.059037  3.238227   38.297264
+child#004         92.164642   3.372180   4.463179   0.000000   0.371932   1.693018  1.034209    2.727226
+child#005         79.246219   1.239772  19.514009   0.000000   2.975453   4.050760  0.586588    4.637348
+child#006         75.402926  18.968510   5.628564   4.835110   0.570295   1.328061  4.167689    5.495750
+child#007         96.578230   0.198364   3.223407   0.000000   0.000000   1.477458  0.501563    1.979021
+child#008         13.240764  15.273990  71.485247  11.753037  69.228862  43.818967  8.180349   51.999315
+child#009         90.503347   9.496653   0.000000   0.000000   0.000000   0.454292  1.718203    2.172495
+child#010         71.435656  25.564096   3.000248  13.984627   0.000000   1.147783  6.967912    8.115695
+
+TIR comparison plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_all_patients\tir_before_after.png
+Combined metrics CSV: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_all_patients\combined_metrics.csv
+Illness profile plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_all_patients\illness_profile.png
+Loop results folder: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_all_patients\loop
+Adaptive results folder: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_all_patients\adaptive

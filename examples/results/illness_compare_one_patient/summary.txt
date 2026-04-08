@@ -1,0 +1,27 @@
+Illness Scenario Test (Loop vs Adaptive)
+================================================================================
+Patients: adult#001
+Controllers: LoopController, AdaptiveLoopController
+
+adult#001 | Loop: TIR=92.04%  TAR=7.96%  TBR=0.00%  Risk Index=2.8621
+adult#001 | Adaptive: TIR=93.83%  TAR=6.17%  TBR=0.00%  Risk Index=2.4622
+adult#001 | Delta (Adaptive-Loop): TIR=+1.79%  TAR=-1.79%  TBR=+0.00%  Risk Index=-0.3998
+
+
+Combined comparison metrics:
+           Loop_TIR  Loop_TAR  Loop_TBR  Loop_RiskIndex  Adaptive_TIR  Adaptive_TAR  Adaptive_TBR  Adaptive_RiskIndex  Delta_TIR  Delta_TAR  Delta_TBR  Delta_RiskIndex
+adult#001   92.0407    7.9593    0.0000          2.8621       93.8259        6.1741        0.0000              2.4622     1.7853    -1.7853     0.0000          -0.3998
+
+Full Loop metrics table:
+           70<=BG<=180    BG>180  BG<70  BG>250  BG<50      LBGI      HBGI  Risk Index
+adult#001    92.040665  7.959335    0.0     0.0    0.0  0.338841  2.523218    2.862059
+
+Full Adaptive metrics table:
+           70<=BG<=180    BG>180  BG<70  BG>250  BG<50      LBGI      HBGI  Risk Index
+adult#001    93.825936  6.174064    0.0     0.0    0.0  0.489052  1.973164    2.462216
+
+TIR comparison plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_one_patient\tir_before_after.png
+Combined metrics CSV: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_one_patient\combined_metrics.csv
+Illness profile plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_one_patient\illness_profile.png
+Loop results folder: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_one_patient\loop
+Adaptive results folder: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_one_patient\adaptive
