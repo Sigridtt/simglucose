@@ -3,14 +3,14 @@ Illness Scenario Test (Loop vs Adaptive)
 Patients: adult#009
 Controllers: LoopController, AdaptiveLoopController
 
-adult#009 | Loop: TIR=66.25%  TAR=16.29%  TBR=17.46%  Risk Index=7.0551
-adult#009 | Adaptive: TIR=36.23%  TAR=10.34%  TBR=53.43%  Risk Index=30.0540
-adult#009 | Delta (Adaptive-Loop): TIR=-30.03%  TAR=-5.95%  TBR=+35.98%  Risk Index=+22.9990
+adult#009 | Loop: TIR=62.37%  TAR=16.29%  TBR=17.46%  Risk Index=7.0551
+adult#009 | Adaptive: TIR=21.38%  TAR=10.34%  TBR=53.43%  Risk Index=30.0540
+adult#009 | Delta (Adaptive-Loop): TIR=-40.99%  TAR=-5.95%  TBR=+35.98%  Risk Index=+22.9990
 
 
 Combined comparison metrics:
            Loop_TIR  Loop_TAR  Loop_TBR  Loop_RiskIndex  Adaptive_TIR  Adaptive_TAR  Adaptive_TBR  Adaptive_RiskIndex  Delta_TIR  Delta_TAR  Delta_TBR  Delta_RiskIndex
-adult#009   66.2534   16.2906   17.4560          7.0551       36.2261       10.3397       53.4342             30.0540   -30.0273    -5.9509    35.9782          22.9990
+adult#009   62.3742   16.2906   17.4560          7.0551       21.3815       10.3397       53.4342             30.0540   -40.9927    -5.9509    35.9782          22.9990
 
 Full Loop metrics table:
            70<=BG<=180     BG>180      BG<70    BG>250     BG<50      LBGI      HBGI  Risk Index
@@ -21,6 +21,7 @@ Full Adaptive metrics table:
 adult#009    36.226134  10.339697  53.434168  0.371932  46.640218  26.960073  3.093968   30.054041
 
 TIR comparison plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\tir_before_after.png
+BG/p2u/ISF plots: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\bg_p2u_isf_adult_009.png
 Combined metrics CSV: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\combined_metrics.csv
 Illness profile plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\illness_profile.png
 Loop results folder: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\loop
