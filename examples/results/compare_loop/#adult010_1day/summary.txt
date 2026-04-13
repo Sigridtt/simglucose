@@ -1,15 +1,15 @@
 1-day comparison: Loop vs Adaptive (same scenario, same seed)
 ================================================================================
 Loop         TIR= 86.16%  TAR= 13.84%  TBR=  0.00%  Risk Index=3.3262
-Adaptive     TIR= 87.20%  TAR= 12.80%  TBR=  0.00%  Risk Index=3.1757
+Adaptive     TIR= 87.20%  TAR= 12.80%  TBR=  0.00%  Risk Index=3.2000
 
 Delta (Adaptive - Loop):
-TIR=+1.04%  TAR=-1.04%  TBR=+0.00%  Risk Index=-0.1505
-Total insulin=+0.3836 U  Max BG=-5.84 mg/dL
+TIR=+1.04%  TAR=-1.04%  TBR=+0.00%  Risk Index=-0.1262
+Total insulin=+0.2694 U  Max BG=-4.63 mg/dL
 
 Run-level stats:
 Loop:     Total insulin=11.9816 U  Max BG=201.81 mg/dL
-Adaptive: Total insulin=12.3653 U  Max BG=195.98 mg/dL
+Adaptive: Total insulin=12.2510 U  Max BG=197.18 mg/dL
 
 Full Loop metrics:
            70<=BG<=180    BG>180  BG<70  BG>250  BG<50      LBGI      HBGI  Risk Index
@@ -17,7 +17,7 @@ adult#010     86.15917  13.84083    0.0     0.0    0.0  0.320466  3.005728    3.
 
 Full Adaptive metrics:
            70<=BG<=180     BG>180  BG<70  BG>250  BG<50      LBGI      HBGI  Risk Index
-adult#010    87.197232  12.802768    0.0     0.0    0.0  0.419217  2.756464    3.175681
+adult#010    87.197232  12.802768    0.0     0.0    0.0  0.410689  2.789267    3.199956
 
 Saved result folders:
 - Loop: C:\Users\sigridtt\Documents\project\simglucose\examples\results\compare_loop\#adult010_1day\loop
