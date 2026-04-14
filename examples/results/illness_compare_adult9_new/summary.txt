@@ -1,0 +1,28 @@
+Illness Scenario Test (Loop vs Adaptive)
+================================================================================
+Patients: adult#009
+Controllers: LoopController, AdaptiveLoopController
+
+adult#009 | Loop: TIR=62.37%  TAR=16.29%  TBR=17.46%  Risk Index=7.0551
+adult#009 | Adaptive: TIR=20.93%  TAR=9.67%  TBR=53.95%  Risk Index=29.9662
+adult#009 | Delta (Adaptive-Loop): TIR=-41.44%  TAR=-6.62%  TBR=+36.50%  Risk Index=+22.9112
+
+
+Combined comparison metrics:
+           Loop_TIR  Loop_TAR  Loop_TBR  Loop_RiskIndex  Adaptive_TIR  Adaptive_TAR  Adaptive_TBR  Adaptive_RiskIndex  Delta_TIR  Delta_TAR  Delta_TBR  Delta_RiskIndex
+adult#009   62.3742   16.2906   17.4560          7.0551       20.9302        9.6702       53.9549             29.9662   -41.4439    -6.6204    36.4989          22.9112
+
+Full Loop metrics table:
+           70<=BG<=180     BG>180      BG<70    BG>250     BG<50      LBGI      HBGI  Risk Index
+adult#009    66.253409  16.290603  17.455988  0.520704  4.487974  3.496319  3.558735    7.055054
+
+Full Adaptive metrics table:
+           70<=BG<=180    BG>180      BG<70    BG>250      BG<50       LBGI      HBGI  Risk Index
+adult#009    36.374907  9.670221  53.954872  0.148773  46.937763  27.090158  2.876077   29.966235
+
+TIR comparison plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\tir_before_after.png
+BG/p2u/ISF plots: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\bg_p2u_isf_adult_009.png
+Combined metrics CSV: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\combined_metrics.csv
+Illness profile plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\illness_profile.png
+Loop results folder: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\loop
+Adaptive results folder: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\adaptive
