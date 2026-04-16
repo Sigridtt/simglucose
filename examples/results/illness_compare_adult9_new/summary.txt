@@ -3,14 +3,15 @@ Illness Scenario Test (Loop vs Adaptive)
 Patients: adult#009
 Controllers: LoopController, AdaptiveLoopController
 
-adult#009 | Loop: TIR=61.89%  TAR=18.99%  TBR=15.10%  Risk Index=6.3973
-adult#009 | Adaptive: TIR=62.62%  TAR=15.03%  TBR=18.84%  Risk Index=7.3677
-adult#009 | Delta (Adaptive-Loop): TIR=+0.73%  TAR=-3.97%  TBR=+3.74%  Risk Index=+0.9704
+adult#009 | Loop: TIR=65.91%  TAR=18.99%  TBR=15.10%  Risk Index=6.3973
+adult#009 | Adaptive: TIR=65.53%  TAR=16.39%  TBR=18.08%  Risk Index=6.9824
+adult#009 | Delta (Adaptive-Loop): TIR=-0.37%  TAR=-2.60%  TBR=+2.98%  Risk Index=+0.5851
 
 
 Combined comparison metrics:
-           Loop_TIR  Loop_TAR  Loop_TBR  Loop_RiskIndex  Adaptive_TIR  Adaptive_TAR  Adaptive_TBR  Adaptive_RiskIndex  Delta_TIR  Delta_TAR  Delta_TBR  Delta_RiskIndex
-adult#009   61.8882   18.9933   15.1004          6.3973       62.6171       15.0260       18.8445              7.3677     0.7289    -3.9673     3.7441           0.9704
+           Loop_TIR  Adaptive_TIR  Loop_TAR  Adaptive_TAR  Loop_TBR  Adaptive_TBR  Delta_TIR  Delta_TAR  Delta_TBR
+Patient                                                                                                           
+adult#009   65.9063       65.5343   18.9933       16.3898   15.1004       18.0759    -0.3719    -2.6035     2.9755
 
 Full Loop metrics table:
            70<=BG<=180     BG>180      BG<70   BG>250     BG<50      LBGI      HBGI  Risk Index
@@ -18,10 +19,10 @@ adult#009    65.906273  18.993305  15.100422  1.14059  1.884453  2.712538  3.684
 
 Full Adaptive metrics table:
            70<=BG<=180     BG>180      BG<70    BG>250     BG<50      LBGI      HBGI  Risk Index
-adult#009    66.129432  15.026035  18.844533  0.793454  5.355815  4.131897  3.235833    7.367729
+adult#009    65.534342  16.389784  18.075874  0.967022  3.570543  3.592222  3.390211    6.982433
 
 TIR comparison plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\tir_before_after.png
-BG/p2u/ISF plots: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\bg_p2u_isf_adult_009.png
+BG/p2u/ISF plots: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\bg_isf_illness_adult_009.png
 Combined metrics CSV: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\combined_metrics.csv
 Illness profile plot: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\illness_profile.png
 Loop results folder: C:\Users\sigridtt\Documents\project\simglucose\examples\results\illness_compare_adult9_new\loop
