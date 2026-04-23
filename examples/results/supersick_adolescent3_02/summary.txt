@@ -1,0 +1,99 @@
+====================================================================================================
+ABLATION STUDY: Loop vs Autotune vs Autosens vs Full Adaptive
+====================================================================================================
+Patients        : 1 (adolescent#003...)
+Simulation      : 14 days
+Illness window  : Day 4–10 (Vmx × 0.2, glucose offset 0.0 mmol/L)
+Warmup          : 1 day(s)
+
+CONDITIONS
+----------------------------------------
+  A_Loop           A: Loop only
+  B_Autotune       B: Loop + Autotune
+  C_Autosens       C: Loop + Autosens
+  D_Autotune_Autosens  D: Autotune + Autosens
+  E_Full           E: Full Adaptive
+
+
+AGGREGATE MEANS (across all patients)
+============================================================
+
+  A: Loop only
+    full        TIR= 71.7%  TAR= 28.3%  TBR=  0.0%
+    pre         TIR= 91.8%  TAR=  8.2%  TBR=  0.0%
+    illness     TIR= 45.0%  TAR= 55.0%  TBR=  0.0%
+    post        TIR= 91.8%  TAR=  8.2%  TBR=  0.0%
+
+  B: Loop + Autotune
+    full        TIR= 73.3%  TAR= 26.7%  TBR=  0.0%
+    pre         TIR= 93.5%  TAR=  6.5%  TBR=  0.0%
+    illness     TIR= 46.0%  TAR= 54.0%  TBR=  0.0%
+    post        TIR= 94.0%  TAR=  6.0%  TBR=  0.0%
+
+  C: Loop + Autosens
+    full        TIR= 73.8%  TAR= 26.2%  TBR=  0.0%
+    pre         TIR= 93.8%  TAR=  6.2%  TBR=  0.0%
+    illness     TIR= 46.8%  TAR= 53.2%  TBR=  0.0%
+    post        TIR= 94.2%  TAR=  5.8%  TBR=  0.0%
+
+  D: Autotune + Autosens
+    full        TIR= 73.8%  TAR= 26.2%  TBR=  0.0%
+    pre         TIR= 93.8%  TAR=  6.2%  TBR=  0.0%
+    illness     TIR= 46.8%  TAR= 53.2%  TBR=  0.0%
+    post        TIR= 94.3%  TAR=  5.7%  TBR=  0.0%
+
+  E: Full Adaptive
+    full        TIR= 73.9%  TAR= 26.1%  TBR=  0.0%
+    pre         TIR= 93.8%  TAR=  6.2%  TBR=  0.0%
+    illness     TIR= 46.8%  TAR= 53.2%  TBR=  0.0%
+    post        TIR= 94.4%  TAR=  5.6%  TBR=  0.0%
+
+
+POST-ILLNESS TBR COMPARISON (days 10–14)
+============================================================
+B_Autotune ↑TBR vs A_Loop = autotune danger without sick detection
+E_Full ↓TBR vs B_Autotune = sick detection benefit
+
+Patient                       A_Loop      B_Autotune      C_Autosens  D_Autotune_Autosens          E_Full
+----------------------------------------------------------------------------------------------------
+adolescent#003                  0.0%            0.0%            0.0%            0.0%            0.0%
+
+
+ILLNESS-WINDOW TIR COMPARISON (days 4–10)
+============================================================
+
+Patient                       A_Loop      B_Autotune      C_Autosens  D_Autotune_Autosens          E_Full
+----------------------------------------------------------------------------------------------------
+adolescent#003                 45.0%           46.0%           46.8%           46.8%           46.8%
+
+
+FULL METRICS TABLE
+============================================================
+
+                A_Loop_full_TIR  A_Loop_full_TAR  A_Loop_full_TBR  A_Loop_pre_TIR  A_Loop_pre_TAR  A_Loop_pre_TBR  A_Loop_illness_TIR  A_Loop_illness_TAR  A_Loop_illness_TBR  A_Loop_post_TIR  A_Loop_post_TAR  A_Loop_post_TBR  B_Autotune_full_TIR  B_Autotune_full_TAR  B_Autotune_full_TBR  B_Autotune_pre_TIR  B_Autotune_pre_TAR  B_Autotune_pre_TBR  B_Autotune_illness_TIR  B_Autotune_illness_TAR  B_Autotune_illness_TBR  B_Autotune_post_TIR  B_Autotune_post_TAR  B_Autotune_post_TBR  C_Autosens_full_TIR  C_Autosens_full_TAR  C_Autosens_full_TBR  C_Autosens_pre_TIR  C_Autosens_pre_TAR  C_Autosens_pre_TBR  C_Autosens_illness_TIR  C_Autosens_illness_TAR  C_Autosens_illness_TBR  C_Autosens_post_TIR  C_Autosens_post_TAR  C_Autosens_post_TBR  D_Autotune_Autosens_full_TIR  D_Autotune_Autosens_full_TAR  D_Autotune_Autosens_full_TBR  D_Autotune_Autosens_pre_TIR  D_Autotune_Autosens_pre_TAR  D_Autotune_Autosens_pre_TBR  D_Autotune_Autosens_illness_TIR  D_Autotune_Autosens_illness_TAR  D_Autotune_Autosens_illness_TBR  D_Autotune_Autosens_post_TIR  D_Autotune_Autosens_post_TAR  D_Autotune_Autosens_post_TBR  E_Full_full_TIR  E_Full_full_TAR  E_Full_full_TBR  E_Full_pre_TIR  E_Full_pre_TAR  E_Full_pre_TBR  E_Full_illness_TIR  E_Full_illness_TAR  E_Full_illness_TBR  E_Full_post_TIR  E_Full_post_TAR  E_Full_post_TBR
+Patient                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+adolescent#003            71.73            28.27              0.0           91.75            8.25             0.0               44.97               55.03                 0.0            91.85             8.15              0.0                 73.3                 26.7                  0.0               93.49                6.51                 0.0                   46.01                   53.99                     0.0                94.02                 5.98                  0.0                73.79                26.21                  0.0               93.84                6.16                 0.0                   46.82                   53.18                     0.0                94.19                 5.81                  0.0                         73.82                         26.18                           0.0                        93.84                         6.16                          0.0                            46.82                            53.18                              0.0                         94.28                          5.72                           0.0            73.87            26.13              0.0           93.84            6.16             0.0               46.82               53.18                 0.0            94.45             5.55              0.0
+
+
+SIMGLUCOSE REPORT RESULTS
+============================================================
+
+  A: Loop only
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adolescent#003       71.733  28.267    0.0  16.563    0.0  0.149  9.425       9.574
+
+  B: Loop + Autotune
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50  LBGI   HBGI  Risk Index
+adolescent#003       73.295  26.705    0.0  15.968    0.0  0.23  8.968       9.198
+
+  C: Loop + Autosens
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adolescent#003       73.791  26.209    0.0  15.224    0.0  0.287  8.666       8.953
+
+  D: Autotune + Autosens
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adolescent#003       73.816  26.184    0.0   15.15    0.0  0.282  8.672       8.954
+
+  E: Full Adaptive
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adolescent#003       73.866  26.134    0.0  15.175    0.0  0.288  8.658       8.946
