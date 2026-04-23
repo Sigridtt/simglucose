@@ -1,0 +1,66 @@
+====================================================================================================
+ABLATION STUDY: Loop vs Autotune vs Autosens vs Full Adaptive
+====================================================================================================
+Patients        : 1 (adolescent#003...)
+Simulation      : 14 days
+Illness window  : Day 4–10 (Vmx × 0.0, glucose offset 0.0 mmol/L)
+Warmup          : 1 day(s)
+
+CONDITIONS
+----------------------------------------
+  A_Loop           A: Loop only
+  D_Autotune_Autosens  D: Autotune + Autosens
+
+
+AGGREGATE MEANS (across all patients)
+============================================================
+
+  A: Loop only
+    full        TIR= 61.8%  TAR= 38.2%  TBR=  0.0%
+    pre         TIR= 91.8%  TAR=  8.2%  TBR=  0.0%
+    illness     TIR= 21.8%  TAR= 78.2%  TBR=  0.0%
+    post        TIR= 91.8%  TAR=  8.2%  TBR=  0.0%
+
+  D: Autotune + Autosens
+    full        TIR= 63.6%  TAR= 36.4%  TBR=  0.0%
+    pre         TIR= 93.8%  TAR=  6.2%  TBR=  0.0%
+    illness     TIR= 22.9%  TAR= 77.1%  TBR=  0.0%
+    post        TIR= 94.2%  TAR=  5.8%  TBR=  0.0%
+
+
+POST-ILLNESS TBR COMPARISON (days 10–14)
+============================================================
+B_Autotune ↑TBR vs A_Loop = autotune danger without sick detection
+E_Full ↓TBR vs B_Autotune = sick detection benefit
+
+Patient                       A_Loop  D_Autotune_Autosens
+----------------------------------------------------
+adolescent#003                  0.0%            0.0%
+
+
+ILLNESS-WINDOW TIR COMPARISON (days 4–10)
+============================================================
+
+Patient                       A_Loop  D_Autotune_Autosens
+----------------------------------------------------
+adolescent#003                 21.8%           22.9%
+
+
+FULL METRICS TABLE
+============================================================
+
+                A_Loop_full_TIR  A_Loop_full_TAR  A_Loop_full_TBR  A_Loop_pre_TIR  A_Loop_pre_TAR  A_Loop_pre_TBR  A_Loop_illness_TIR  A_Loop_illness_TAR  A_Loop_illness_TBR  A_Loop_post_TIR  A_Loop_post_TAR  A_Loop_post_TBR  D_Autotune_Autosens_full_TIR  D_Autotune_Autosens_full_TAR  D_Autotune_Autosens_full_TBR  D_Autotune_Autosens_pre_TIR  D_Autotune_Autosens_pre_TAR  D_Autotune_Autosens_pre_TBR  D_Autotune_Autosens_illness_TIR  D_Autotune_Autosens_illness_TAR  D_Autotune_Autosens_illness_TBR  D_Autotune_Autosens_post_TIR  D_Autotune_Autosens_post_TAR  D_Autotune_Autosens_post_TBR
+Patient                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+adolescent#003            61.82            38.18              0.0           91.75            8.25             0.0               21.82               78.18                 0.0            91.85             8.15              0.0                         63.55                         36.45                           0.0                        93.84                         6.16                          0.0                            22.92                            77.08                              0.0                         94.19                          5.81                           0.0
+
+
+SIMGLUCOSE REPORT RESULTS
+============================================================
+
+  A: Loop only
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI    HBGI  Risk Index
+adolescent#003       61.815  38.185    0.0  28.664    0.0  0.013  23.753      23.766
+
+  D: Autotune + Autosens
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adolescent#003       63.551  36.449    0.0   28.44    0.0  0.063  23.25      23.313
