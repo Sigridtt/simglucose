@@ -1,0 +1,66 @@
+====================================================================================================
+ABLATION STUDY: Loop vs Autotune vs Autosens vs Full Adaptive
+====================================================================================================
+Patients        : 1 (adolescent#003...)
+Simulation      : 14 days
+Illness window  : Day 4–10 (Vmx × 0.0,  kp3 × 0.0, rat × 1.6)
+Warmup          : 1 day(s)
+
+CONDITIONS
+----------------------------------------
+  E_Full           E: Full Adaptive
+  A_Loop           A: Loop only
+
+
+AGGREGATE MEANS (across all patients)
+============================================================
+
+  E: Full Adaptive
+    full        TIR= 62.2%  TAR= 37.8%  TBR=  0.0%
+    pre         TIR= 93.8%  TAR=  6.2%  TBR=  0.0%
+    illness     TIR= 19.4%  TAR= 80.6%  TBR=  0.0%
+    post        TIR= 94.5%  TAR=  5.5%  TBR=  0.0%
+
+  A: Loop only
+    full        TIR= 60.3%  TAR= 39.7%  TBR=  0.0%
+    pre         TIR= 91.8%  TAR=  8.2%  TBR=  0.0%
+    illness     TIR= 18.2%  TAR= 81.8%  TBR=  0.0%
+    post        TIR= 92.0%  TAR=  8.0%  TBR=  0.0%
+
+
+POST-ILLNESS TBR COMPARISON (days 10–14)
+============================================================
+B_Autotune ↑TBR vs A_Loop = autotune danger without sick detection
+E_Full ↓TBR vs B_Autotune = sick detection benefit
+
+Patient                       E_Full          A_Loop
+----------------------------------------------------
+adolescent#003                  0.0%            0.0%
+
+
+ILLNESS-WINDOW TIR COMPARISON (days 4–10)
+============================================================
+
+Patient                       E_Full          A_Loop
+----------------------------------------------------
+adolescent#003                 19.4%           18.2%
+
+
+FULL METRICS TABLE
+============================================================
+
+                E_Full_full_TIR  E_Full_full_TAR  E_Full_full_TBR  E_Full_pre_TIR  E_Full_pre_TAR  E_Full_pre_TBR  E_Full_illness_TIR  E_Full_illness_TAR  E_Full_illness_TBR  E_Full_post_TIR  E_Full_post_TAR  E_Full_post_TBR  A_Loop_full_TIR  A_Loop_full_TAR  A_Loop_full_TBR  A_Loop_pre_TIR  A_Loop_pre_TAR  A_Loop_pre_TBR  A_Loop_illness_TIR  A_Loop_illness_TAR  A_Loop_illness_TBR  A_Loop_post_TIR  A_Loop_post_TAR  A_Loop_post_TBR
+Patient                                                                                                                                                                                                                                                                                                                                                                                                                                           
+adolescent#003            62.16            37.84              0.0           93.84            6.16             0.0               19.44               80.56                 0.0            94.54             5.46              0.0             60.3             39.7              0.0           91.75            8.25             0.0               18.17               81.83                 0.0            92.02             7.98              0.0
+
+
+SIMGLUCOSE REPORT RESULTS
+============================================================
+
+  E: Full Adaptive
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI    HBGI  Risk Index
+adolescent#003       62.162  37.838    0.0  30.523    0.0  0.048  29.861      29.909
+
+  A: Loop only
+                70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI    HBGI  Risk Index
+adolescent#003       60.303  39.697    0.0  30.622    0.0  0.011  30.295      30.306

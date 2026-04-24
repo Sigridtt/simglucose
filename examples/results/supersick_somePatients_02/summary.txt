@@ -1,0 +1,67 @@
+====================================================================================================
+ABLATION STUDY: Loop vs Autotune vs Autosens vs Full Adaptive
+====================================================================================================
+Patients        : 4 (adult#006, child#008, child#004, adolescent#003...)
+Simulation      : 14 days
+Illness window  : Day 4–10 (Vmx × 0.2,  kp3 × 0.2, rat × 1.6)
+Warmup          : 1 day(s)
+
+CONDITIONS
+----------------------------------------
+  A_Loop           A: Loop only
+
+
+AGGREGATE MEANS (across all patients)
+============================================================
+
+  A: Loop only
+    full        TIR= 62.3%  TAR= 32.3%  TBR=  5.4%
+    pre         TIR= 80.0%  TAR= 12.0%  TBR=  7.9%
+    illness     TIR= 39.0%  TAR= 59.2%  TBR=  1.9%
+    post        TIR= 79.4%  TAR= 12.3%  TBR=  8.3%
+
+
+POST-ILLNESS TBR COMPARISON (days 10–14)
+============================================================
+B_Autotune ↑TBR vs A_Loop = autotune danger without sick detection
+E_Full ↓TBR vs B_Autotune = sick detection benefit
+
+Patient                       A_Loop
+------------------------------------
+adolescent#003                  0.0%
+adult#006                       0.0%
+child#004                       5.3%
+child#008                      27.8%
+
+
+ILLNESS-WINDOW TIR COMPARISON (days 4–10)
+============================================================
+
+Patient                       A_Loop
+------------------------------------
+adolescent#003                 31.9%
+adult#006                      36.6%
+child#004                      52.5%
+child#008                      34.9%
+
+
+FULL METRICS TABLE
+============================================================
+
+                A_Loop_full_TIR  A_Loop_full_TAR  A_Loop_full_TBR  A_Loop_pre_TIR  A_Loop_pre_TAR  A_Loop_pre_TBR  A_Loop_illness_TIR  A_Loop_illness_TAR  A_Loop_illness_TBR  A_Loop_post_TIR  A_Loop_post_TAR  A_Loop_post_TBR
+Patient                                                                                                                                                                                                                         
+adolescent#003            66.18            33.82             0.00           91.75            8.25            0.00               31.89               68.11                0.00            92.02             7.98             0.00
+adult#006                 72.45            27.55             0.00           99.48            0.52            0.00               36.57               63.43                0.00            99.22             0.78             0.00
+child#004                 75.63            21.82             2.55           94.18            2.17            3.65               52.49               47.51                0.00            91.76             2.95             5.29
+child#008                 34.81            45.97            19.22           34.72           37.15           28.12               34.90               57.58                7.52            34.78            37.38            27.84
+
+
+SIMGLUCOSE REPORT RESULTS
+============================================================
+
+  A: Loop only
+                70<=BG<=180  BG>180   BG<70  BG>250   BG<50    LBGI    HBGI  Risk Index
+adult#006            72.452  27.548   0.000  18.795   0.000   0.011  10.874      10.885
+child#008            34.813  45.971  19.216  37.887  14.555  12.044  28.426      40.471
+child#004            75.626  21.820   2.554  13.439   0.422   1.071   7.430       8.502
+adolescent#003       66.179  33.821   0.000  19.737   0.000   0.011  12.163      12.173
