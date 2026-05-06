@@ -1,0 +1,99 @@
+====================================================================================================
+ABLATION STUDY: Loop vs Autotune vs Autosens vs Full Adaptive
+====================================================================================================
+Patients        : 1 (adult#003...)
+Simulation      : 14 days
+Illness window  : Day 4–10 (Vmx × 0.2,  kp3 × 0.2, rat × 1.6)
+Warmup          : 1 day(s)
+
+CONDITIONS
+----------------------------------------
+  A_Loop           A: Loop only
+  B_Autotune       B: Loop + Autotune
+  C_Autosens       C: Loop + Autosens
+  D_Autotune_Autosens  D: Autotune + Autosens
+  E_Full           E: Full Adaptive
+
+
+AGGREGATE MEANS (across all patients)
+============================================================
+
+  A: Loop only
+    full        TIR= 70.4%  TAR= 29.6%  TBR=  0.0%
+    pre         TIR= 97.9%  TAR=  2.1%  TBR=  0.0%
+    illness     TIR= 33.2%  TAR= 66.8%  TBR=  0.0%
+    post        TIR= 98.7%  TAR=  1.3%  TBR=  0.0%
+
+  B: Loop + Autotune
+    full        TIR= 72.7%  TAR= 27.3%  TBR=  0.0%
+    pre         TIR= 99.0%  TAR=  1.0%  TBR=  0.0%
+    illness     TIR= 37.9%  TAR= 62.1%  TBR=  0.0%
+    post        TIR= 98.6%  TAR=  1.4%  TBR=  0.0%
+
+  C: Loop + Autosens
+    full        TIR= 74.7%  TAR= 25.3%  TBR=  0.0%
+    pre         TIR= 99.6%  TAR=  0.4%  TBR=  0.0%
+    illness     TIR= 41.6%  TAR= 58.4%  TBR=  0.0%
+    post        TIR= 99.7%  TAR=  0.3%  TBR=  0.0%
+
+  D: Autotune + Autosens
+    full        TIR= 74.7%  TAR= 25.3%  TBR=  0.0%
+    pre         TIR= 99.6%  TAR=  0.4%  TBR=  0.0%
+    illness     TIR= 41.5%  TAR= 58.5%  TBR=  0.0%
+    post        TIR= 99.5%  TAR=  0.5%  TBR=  0.0%
+
+  E: Full Adaptive
+    full        TIR= 71.2%  TAR= 28.8%  TBR=  0.0%
+    pre         TIR= 99.6%  TAR=  0.4%  TBR=  0.0%
+    illness     TIR= 33.5%  TAR= 66.5%  TBR=  0.0%
+    post        TIR= 99.5%  TAR=  0.5%  TBR=  0.0%
+
+
+POST-ILLNESS TBR COMPARISON (days 10–14)
+============================================================
+B_Autotune ↑TBR vs A_Loop = autotune danger without sick detection
+E_Full ↓TBR vs B_Autotune = sick detection benefit
+
+Patient                       A_Loop      B_Autotune      C_Autosens  D_Autotune_Autosens          E_Full
+----------------------------------------------------------------------------------------------------
+adult#003                       0.0%            0.0%            0.0%            0.0%            0.0%
+
+
+ILLNESS-WINDOW TIR COMPARISON (days 4–10)
+============================================================
+
+Patient                       A_Loop      B_Autotune      C_Autosens  D_Autotune_Autosens          E_Full
+----------------------------------------------------------------------------------------------------
+adult#003                      33.2%           37.9%           41.6%           41.5%           33.5%
+
+
+FULL METRICS TABLE
+============================================================
+
+           A_Loop_full_TIR  A_Loop_full_TAR  A_Loop_full_TBR  A_Loop_pre_TIR  A_Loop_pre_TAR  A_Loop_pre_TBR  A_Loop_illness_TIR  A_Loop_illness_TAR  A_Loop_illness_TBR  A_Loop_post_TIR  A_Loop_post_TAR  A_Loop_post_TBR  B_Autotune_full_TIR  B_Autotune_full_TAR  B_Autotune_full_TBR  B_Autotune_pre_TIR  B_Autotune_pre_TAR  B_Autotune_pre_TBR  B_Autotune_illness_TIR  B_Autotune_illness_TAR  B_Autotune_illness_TBR  B_Autotune_post_TIR  B_Autotune_post_TAR  B_Autotune_post_TBR  C_Autosens_full_TIR  C_Autosens_full_TAR  C_Autosens_full_TBR  C_Autosens_pre_TIR  C_Autosens_pre_TAR  C_Autosens_pre_TBR  C_Autosens_illness_TIR  C_Autosens_illness_TAR  C_Autosens_illness_TBR  C_Autosens_post_TIR  C_Autosens_post_TAR  C_Autosens_post_TBR  D_Autotune_Autosens_full_TIR  D_Autotune_Autosens_full_TAR  D_Autotune_Autosens_full_TBR  D_Autotune_Autosens_pre_TIR  D_Autotune_Autosens_pre_TAR  D_Autotune_Autosens_pre_TBR  D_Autotune_Autosens_illness_TIR  D_Autotune_Autosens_illness_TAR  D_Autotune_Autosens_illness_TBR  D_Autotune_Autosens_post_TIR  D_Autotune_Autosens_post_TAR  D_Autotune_Autosens_post_TBR  E_Full_full_TIR  E_Full_full_TAR  E_Full_full_TBR  E_Full_pre_TIR  E_Full_pre_TAR  E_Full_pre_TBR  E_Full_illness_TIR  E_Full_illness_TAR  E_Full_illness_TBR  E_Full_post_TIR  E_Full_post_TAR  E_Full_post_TBR
+Patient                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+adult#003            70.42            29.58              0.0           97.92            2.08             0.0               33.22               66.78                 0.0             98.7              1.3              0.0                72.73                27.27                  0.0               99.05                0.95                 0.0                   37.91                   62.09                     0.0                98.61                 1.39                  0.0                74.73                25.27                  0.0               99.57                0.43                 0.0                   41.55                   58.45                     0.0                99.65                 0.35                  0.0                         74.66                         25.34                           0.0                        99.57                         0.43                          0.0                            41.49                            58.51                              0.0                         99.48                          0.52                           0.0            71.24            28.76              0.0           99.57            0.43             0.0               33.51               66.49                 0.0            99.48             0.52              0.0
+
+
+SIMGLUCOSE REPORT RESULTS
+============================================================
+
+  A: Loop only
+           70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adult#003       70.419  29.581    0.0  17.853    0.0  0.006  9.012       9.018
+
+  B: Loop + Autotune
+           70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adult#003       72.725  27.275    0.0  17.431    0.0  0.011  8.686       8.697
+
+  C: Loop + Autosens
+           70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adult#003       74.733  25.267    0.0  16.439    0.0  0.031  8.114       8.145
+
+  D: Autotune + Autosens
+           70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adult#003       74.659  25.341    0.0  16.439    0.0  0.027  8.141       8.168
+
+  E: Full Adaptive
+           70<=BG<=180  BG>180  BG<70  BG>250  BG<50   LBGI   HBGI  Risk Index
+adult#003       71.237  28.763    0.0  17.208    0.0  0.027  8.651       8.678
