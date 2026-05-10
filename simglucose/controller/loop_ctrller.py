@@ -86,7 +86,7 @@ class LoopController(Controller):
         json_data['recommendationType'] = self.recommendation_type  # Can be: "automaticBolus", "tempBasal"
         dose_recommendations = loop_to_python_api.get_dose_recommendations(json_data)
         basal_rec = dose_recommendations['automatic']['basalAdjustment']['unitsPerHour']
-
+        
         if meal > 0:
             # Add manual bolus for meals. Algorithm does not recommend meal boluses if we do not do this
             json_data['recommendationType'] = 'manualBolus'

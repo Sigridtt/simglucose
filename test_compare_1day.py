@@ -68,8 +68,7 @@ def run_adaptive():
         use_tdd_settings=True,
         insulin_type='novolog',
         warmup_days=1,
-        adaptation_interval_hours=24,
-        n_autotune_iterations=1,
+        autotune_interval_hours=24,
         debug_timing=False,
     )
 

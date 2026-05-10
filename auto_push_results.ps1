@@ -4,7 +4,7 @@ param(
     [int]$PollIntervalMinutes = 10,
     [int]$QuietMinutes = 20,
     [string]$CommitPrefix = "auto-push results",
-    [int]$MaxRunHours = 6
+    [int]$MaxRunHours = 48
 )
 
 $ErrorActionPreference = "Stop"
