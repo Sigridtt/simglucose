@@ -1,8 +1,10 @@
 from datetime import datetime, timedelta
+import json
 from pathlib import Path
 import sys
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 # The bridge is in the separate AdaptiveControllerMatLab repository.
@@ -25,14 +27,36 @@ PATIENT_FILE = SIMGLUCOSE_ROOT / "simglucose" / "params" / "vpatient_params.csv"
 OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab"
 
 PATIENTS = ["child#001", "adolescent#001", "adult#001"]
+DAYS = 14
+SEED = 1
+
+
+def daily_meals(meals, days):
+    return [
+        (24 * day + hour, grams)
+        for day in range(days)
+        for hour, grams in meals
+    ]
+
+
 SCENARIOS = {
-    "standard": [(7, 45), (12, 70), (18, 80)],
-    "small_meals": [(7, 30), (12, 40), (18, 50)],
-    "no_meals": [],
+    "standard": daily_meals([(7, 45), (12, 70), (18, 80)], DAYS),
 }
 
 
-def run_all(days=3, seed=1):
+def state_to_jsonable(state):
+    field_names = getattr(state, "_fieldnames", None)
+    if field_names is None:
+        field_names = list(state.keys())
+    return {
+        field: np.asarray(state[field], dtype=float).reshape(-1).tolist()
+        if field in ("step", "bolusType", "aggressiveness", "theta")
+        else np.asarray(state[field], dtype=float).tolist()
+        for field in field_names
+    }
+
+
+def run_all(days=DAYS, seed=SEED):
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     results = {}
     engine = start_engine("matlab", str(BRIDGE_REPO))
@@ -61,6 +85,22 @@ def run_all(days=3, seed=1):
                 result.to_csv(
                     OUTPUT_DIR / f"{patient_name}_{scenario_name}.csv",
                     index=False,
+                )
+                state = controller.controller_state()
+                state_json = state_to_jsonable(state)
+                state_json["adaptationColumns"] = [
+                    "step", "nDays", "theta", "Umax", "Kp", "Ki", "Kd"
+                ]
+                state_json["autoCorrectionColumns"] = [
+                    "step", "cgm", "iob", "raw", "capped", "bolusU",
+                    "minBG_noBolus", "minBG_withBolus", "lowThreshold"
+                ]
+                state_path = OUTPUT_DIR / (
+                    f"{patient_name}_{scenario_name}_controller_state.json"
+                )
+                state_path.write_text(
+                    json.dumps(state_json, indent=2),
+                    encoding="utf-8",
                 )
                 results[(patient_name, scenario_name)] = result
     finally:
