@@ -1,16 +1,55 @@
 from datetime import datetime, timedelta
 import json
 from pathlib import Path
+import subprocess
 import sys
+import tempfile
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-# The bridge is in the separate AdaptiveControllerMatLab repository.
-BRIDGE_REPO = Path(
-    r"C:\Users\sigridtt\OneDrive - NTNU\Documents\Master\AdaptiveControllerMatLab"
-)
+CONTROLLER_REPO_URL = "https://github.com/Sigridtt/AdaptiveControllerMatLab.git"
+CONTROLLER_REPO_BRANCH = "test"
+CONTROLLER_CACHE = Path(tempfile.gettempdir()) / "AdaptiveControllerMatLab"
+
+
+def fetch_controller_repo():
+    if not (CONTROLLER_CACHE / ".git").exists():
+        subprocess.run(
+            [
+                "git", "clone", "--branch", CONTROLLER_REPO_BRANCH,
+                "--single-branch", CONTROLLER_REPO_URL, str(CONTROLLER_CACHE),
+            ],
+            check=True,
+        )
+    else:
+        subprocess.run(
+            [
+                "git", "-C", str(CONTROLLER_CACHE), "fetch", "origin",
+                CONTROLLER_REPO_BRANCH,
+            ],
+            check=True,
+        )
+        subprocess.run(
+            [
+                "git", "-C", str(CONTROLLER_CACHE), "checkout", "-B",
+                CONTROLLER_REPO_BRANCH, f"origin/{CONTROLLER_REPO_BRANCH}",
+            ],
+            check=True,
+        )
+        subprocess.run(
+            [
+                "git", "-C", str(CONTROLLER_CACHE), "reset", "--hard",
+                f"origin/{CONTROLLER_REPO_BRANCH}",
+            ],
+            check=True,
+        )
+    return CONTROLLER_CACHE
+
+
+# The bridge is fetched from the separate AdaptiveControllerMatLab repository.
+BRIDGE_REPO = fetch_controller_repo()
 if str(BRIDGE_REPO) not in sys.path:
     sys.path.insert(0, str(BRIDGE_REPO))
 
