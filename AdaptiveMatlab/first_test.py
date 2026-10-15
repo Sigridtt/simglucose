@@ -59,11 +59,11 @@ from simglucose.sensor.cgm import CGMSensor
 from simglucose.simulation.env import T1DSimEnv
 from simglucose.simulation.scenario import CustomScenario
 from simglucose.simulation.sim_engine import SimObj
-from simglucose_bridge import AdaptiveControllerV3, start_engine
+from simglucose_bridge import AdaptiveController, start_engine
 
 SIMGLUCOSE_ROOT = Path(__file__).resolve().parents[1]
 PATIENT_FILE = SIMGLUCOSE_ROOT / "simglucose" / "params" / "vpatient_params.csv"
-OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab"
+OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlabv4"
 
 PATIENTS = ["child#001", "adolescent#001", "adult#001"]
 DAYS = 14
@@ -112,7 +112,7 @@ def run_all(days=DAYS, seed=SEED):
                     InsulinPump.withName("Insulet"),
                     scenario,
                 )
-                controller = AdaptiveControllerV3(engine)
+                controller = AdaptiveController(engine, controller="adaptiveV4")
                 simulation = SimObj(
                     env,
                     controller,

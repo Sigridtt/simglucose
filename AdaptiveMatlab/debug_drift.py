@@ -48,7 +48,7 @@ CONFIGS = {
     "C_pid_gain_only": {**NO_APPLY, "adapt_apply_pid_gain": True},
     "D_cf_only": {**NO_APPLY, "adapt_apply_cf": True},
     "E_model_only": {**NO_APPLY, "adapt_apply_model": True},
-    "F_fixed_umax": dict(adapt_limit=False),                      # Umax fixed at 1.5 x basal
+    #"F_fixed_umax": dict(adapt_limit=False),                      # Umax fixed at 1.5 x basal
     "BB": None,
 }
 
