@@ -1,0 +1,52 @@
+{
+  "controller_repo": "https://github.com/Sigridtt/AdaptiveControllerMatLab.git",
+  "controller_branch": "test",
+  "controller_commit": "95587a475aa6f11c9d40cfaec40544bfa1246706",
+  "days": 14,
+  "seed": 1,
+  "meals": [
+    [
+      7,
+      45
+    ],
+    [
+      12,
+      70
+    ],
+    [
+      18,
+      80
+    ]
+  ],
+  "configs": {
+    "full": {},
+    "A_no_adaptation": {
+      "adaptation": false
+    },
+    "B_fit_only": {
+      "adapt_apply_model": false,
+      "adapt_apply_cf": false,
+      "adapt_apply_pid_gain": false
+    },
+    "C_pid_gain_only": {
+      "adapt_apply_model": false,
+      "adapt_apply_cf": false,
+      "adapt_apply_pid_gain": true
+    },
+    "D_cf_only": {
+      "adapt_apply_model": false,
+      "adapt_apply_cf": true,
+      "adapt_apply_pid_gain": false
+    },
+    "E_model_only": {
+      "adapt_apply_model": true,
+      "adapt_apply_cf": false,
+      "adapt_apply_pid_gain": false
+    },
+    "F_fixed_umax": {
+      "adapt_limit": false
+    },
+    "BB": null
+  },
+  "run_at": "2026-10-15T11:03:51"
+}
