@@ -112,7 +112,7 @@ def run_all(days=DAYS, seed=SEED):
                     InsulinPump.withName("Insulet"),
                     scenario,
                 )
-                controller = AdaptiveController(engine, controller="adaptiveV3")
+                controller = AdaptiveController(engine, controller="adaptiveV4")
                 simulation = SimObj(
                     env,
                     controller,

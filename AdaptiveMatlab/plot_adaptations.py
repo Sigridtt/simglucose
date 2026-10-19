@@ -23,7 +23,7 @@ SAMPLE_MIN = 5
 RESULTS_FOLDER = (
     Path(__file__).resolve().parents[1]
     / "simglucose_results"
-    / "adaptive_matlabv4_TDD_off"
+    / "adaptive_matlabv4"
 )
 
 
@@ -60,6 +60,40 @@ def sample_time(result):
         timestamps = pd.to_datetime(result["Time"])
         return (timestamps - timestamps.iloc[0]).dt.total_seconds() / 3600
     return np.arange(len(result)) * SAMPLE_MIN / 60
+
+
+def plot_metrics_table(result, patient, config, output_folder):
+    bg = result["BG"].to_numpy(dtype=float)
+    finite_bg = bg[np.isfinite(bg)]
+    metrics = [
+        ("TIR (70-180 mg/dL)", 100 * np.mean((finite_bg >= 70) & (finite_bg <= 180))),
+        ("TAR (>180 mg/dL)", 100 * np.mean(finite_bg > 180)),
+        ("TBR (<70 mg/dL)", 100 * np.mean(finite_bg < 70)),
+    ]
+    if "Risk" in result:
+        risk = result["Risk"].to_numpy(dtype=float)
+        metrics.append(("Mean risk", np.nanmean(risk)))
+    else:
+        metrics.append(("Mean risk", np.nan))
+
+    figure, axis = plt.subplots(figsize=(6, 2.8))
+    axis.axis("off")
+    axis.set_title(f"Metrics: {patient} / {config}", pad=16)
+    table = axis.table(
+        cellText=[[label, "N/A" if np.isnan(value) else f"{value:.2f}"] for label, value in metrics],
+        colLabels=["Metric", "Value"],
+        cellLoc="center",
+        colLoc="center",
+        loc="center",
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(11)
+    table.scale(1, 1.6)
+    figure.tight_layout()
+    output_path = output_folder / f"{safe_name(config)}_{safe_name(patient)}_metrics.png"
+    figure.savefig(output_path, dpi=150, bbox_inches="tight")
+    plt.close(figure)
+    return output_path
 
 
 def plot_result(csv_path, results_folder, output_folder):
@@ -132,7 +166,8 @@ def plot_result(csv_path, results_folder, output_folder):
     output_path = output_folder / f"{safe_name(config)}_{safe_name(patient)}_adaptations.png"
     figure.savefig(output_path, dpi=150)
     plt.close(figure)
-    return output_path
+    metrics_path = plot_metrics_table(result, patient, config, output_folder)
+    return output_path, metrics_path
 
 
 def main():
@@ -147,10 +182,11 @@ def main():
             f"No simulation CSV files with a BG column found in {results_folder}"
         )
 
-    outputs = [plot_result(path, results_folder, output_folder) for path in csv_paths]
-    for output in outputs:
-        if output is not None:
-            print(f"Saved {output}")
+    for path in csv_paths:
+        outputs = plot_result(path, results_folder, output_folder)
+        if outputs is not None:
+            for output in outputs:
+                print(f"Saved {output}")
 
 
 if __name__ == "__main__":
