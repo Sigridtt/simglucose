@@ -89,7 +89,7 @@ def state_to_jsonable(state):
         field_names = list(state.keys())
     return {
         field: np.asarray(state[field], dtype=float).reshape(-1).tolist()
-        if field in ("step", "bolusType", "aggressiveness", "theta")
+        if field in ("step", "bolusType", "aggressiveness", "theta", "loopU", "bolusU")
         else np.asarray(state[field], dtype=float).tolist()
         for field in field_names
     }
@@ -140,6 +140,10 @@ def run_all(days=DAYS, seed=SEED):
                 state_path.write_text(
                     json.dumps(state_json, indent=2),
                     encoding="utf-8",
+                )
+                controller.insulin_log(state).to_csv(
+                    OUTPUT_DIR / f"{patient_name}_{scenario_name}_insulin.csv",
+                    index=False,
                 )
                 results[(patient_name, scenario_name)] = result
     finally:
