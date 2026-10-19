@@ -9,47 +9,58 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-CONTROLLER_REPO_URL = "https://github.com/Sigridtt/AdaptiveControllerMatLab.git"
-CONTROLLER_REPO_BRANCH = "test"
-CONTROLLER_CACHE = Path(tempfile.gettempdir()) / "AdaptiveControllerMatLab"
+GITHUB_REPO_URL = "https://github.com/Sigridtt/AdaptiveControllerMatLab.git"
+GITHUB_REPO_BRANCH = "test"
+GITHUB_CACHE = Path(tempfile.gettempdir()) / "AdaptiveControllerMatLab"
 
 
-def fetch_controller_repo():
-    if not (CONTROLLER_CACHE / ".git").exists():
+def fetch_github_repo():
+    if not (GITHUB_CACHE / ".git").exists():
         subprocess.run(
             [
-                "git", "clone", "--branch", CONTROLLER_REPO_BRANCH,
-                "--single-branch", CONTROLLER_REPO_URL, str(CONTROLLER_CACHE),
+                "git", "clone", "--branch", GITHUB_REPO_BRANCH,
+                "--single-branch", GITHUB_REPO_URL, str(GITHUB_CACHE),
             ],
             check=True,
         )
     else:
         subprocess.run(
             [
-                "git", "-C", str(CONTROLLER_CACHE), "fetch", "origin",
-                CONTROLLER_REPO_BRANCH,
+                "git", "-C", str(GITHUB_CACHE), "fetch", "origin",
+                GITHUB_REPO_BRANCH,
             ],
             check=True,
         )
         subprocess.run(
             [
-                "git", "-C", str(CONTROLLER_CACHE), "checkout", "-B",
-                CONTROLLER_REPO_BRANCH, f"origin/{CONTROLLER_REPO_BRANCH}",
+                "git", "-C", str(GITHUB_CACHE), "checkout", "-B",
+                GITHUB_REPO_BRANCH, f"origin/{GITHUB_REPO_BRANCH}",
             ],
             check=True,
         )
         subprocess.run(
             [
-                "git", "-C", str(CONTROLLER_CACHE), "reset", "--hard",
-                f"origin/{CONTROLLER_REPO_BRANCH}",
+                "git", "-C", str(GITHUB_CACHE), "reset", "--hard",
+                f"origin/{GITHUB_REPO_BRANCH}",
             ],
             check=True,
         )
-    return CONTROLLER_CACHE
+    return GITHUB_CACHE
 
 
-# The bridge is fetched from the separate AdaptiveControllerMatLab repository.
-BRIDGE_REPO = fetch_controller_repo()
+# Select exactly one controller source. Comment the active line and uncomment
+# the other line when switching between the local checkout and GitHub.
+BRIDGE_REPO = Path(
+    r"C:\Users\sigridtt\OneDrive - NTNU\Documents\Master\AdaptiveControllerMatLab"
+)
+# BRIDGE_REPO = fetch_github_repo()
+
+CONTROLLER_REPO_URL = (
+    GITHUB_REPO_URL if BRIDGE_REPO == GITHUB_CACHE else str(BRIDGE_REPO)
+)
+CONTROLLER_REPO_BRANCH = (
+    GITHUB_REPO_BRANCH if BRIDGE_REPO == GITHUB_CACHE else "local"
+)
 if str(BRIDGE_REPO) not in sys.path:
     sys.path.insert(0, str(BRIDGE_REPO))
 

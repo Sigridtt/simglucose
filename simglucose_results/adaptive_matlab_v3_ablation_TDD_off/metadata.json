@@ -1,0 +1,52 @@
+{
+  "controller_repo": "C:\\Users\\sigridtt\\OneDrive - NTNU\\Documents\\Master\\AdaptiveControllerMatLab",
+  "controller_branch": "local",
+  "controller_commit": "029401a45ceb1aec4c3c88089a374f0b8442daf6",
+  "days": 10,
+  "seed": 1,
+  "meals": [
+    [
+      7,
+      45
+    ],
+    [
+      12,
+      70
+    ],
+    [
+      18,
+      80
+    ]
+  ],
+  "configs": {
+    "full": {},
+    "A_no_adaptation": {
+      "adaptation": false
+    },
+    "B_fit_only": {
+      "adapt_apply_model": false,
+      "adapt_apply_cf": false,
+      "adapt_apply_pid_gain": false
+    },
+    "C_pid_gain_only": {
+      "adapt_apply_model": false,
+      "adapt_apply_cf": false,
+      "adapt_apply_pid_gain": true
+    },
+    "D_cf_only": {
+      "adapt_apply_model": false,
+      "adapt_apply_cf": true,
+      "adapt_apply_pid_gain": false
+    },
+    "E_model_only": {
+      "adapt_apply_model": true,
+      "adapt_apply_cf": false,
+      "adapt_apply_pid_gain": false
+    },
+    "F_fixed_umax": {
+      "adapt_limit": false
+    },
+    "BB": null
+  },
+  "run_at": "2026-10-19T13:06:31"
+}

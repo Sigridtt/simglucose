@@ -29,11 +29,11 @@ import numpy as np
 import pandas as pd
 
 SIMGLUCOSE_ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab_ablation"
+OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab_v3_ablation_TDD_off"
 PARAMS = SIMGLUCOSE_ROOT / "simglucose" / "params"
 
 PATIENTS = ["child#001", "adolescent#001", "adult#001"]
-DAYS = 14
+DAYS = 10
 SEED = 1
 SAMPLE_MIN = 5                      # GuardianRT
 MEALS = [(7, 45), (12, 70), (18, 80)]
@@ -48,7 +48,7 @@ CONFIGS = {
     "C_pid_gain_only": {**NO_APPLY, "adapt_apply_pid_gain": True},
     "D_cf_only": {**NO_APPLY, "adapt_apply_cf": True},
     "E_model_only": {**NO_APPLY, "adapt_apply_model": True},
-    #"F_fixed_umax": dict(adapt_limit=False),                      # Umax fixed at 1.5 x basal
+    "F_fixed_umax": dict(adapt_limit=False),                      # Umax fixed at 1.5 x basal
     "BB": None,
 }
 
