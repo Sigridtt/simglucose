@@ -63,10 +63,10 @@ from simglucose_bridge import AdaptiveController, start_engine
 
 SIMGLUCOSE_ROOT = Path(__file__).resolve().parents[1]
 PATIENT_FILE = SIMGLUCOSE_ROOT / "simglucose" / "params" / "vpatient_params.csv"
-OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlabv4"
+OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlabv4_TDD_off"
 
 PATIENTS = ["child#001", "adolescent#001", "adult#001"]
-DAYS = 14
+DAYS = 10
 SEED = 1
 
 
@@ -89,7 +89,7 @@ def state_to_jsonable(state):
         field_names = list(state.keys())
     return {
         field: np.asarray(state[field], dtype=float).reshape(-1).tolist()
-        if field in ("step", "bolusType", "aggressiveness", "theta")
+        if field in ("step", "bolusType", "aggressiveness", "theta", "loopU", "bolusU")
         else np.asarray(state[field], dtype=float).tolist()
         for field in field_names
     }
@@ -112,7 +112,7 @@ def run_all(days=DAYS, seed=SEED):
                     InsulinPump.withName("Insulet"),
                     scenario,
                 )
-                controller = AdaptiveController(engine, controller="adaptiveV4")
+                controller = AdaptiveController(engine, controller="adaptiveV3")
                 simulation = SimObj(
                     env,
                     controller,
@@ -140,6 +140,10 @@ def run_all(days=DAYS, seed=SEED):
                 state_path.write_text(
                     json.dumps(state_json, indent=2),
                     encoding="utf-8",
+                )
+                controller.insulin_log(state).to_csv(
+                    OUTPUT_DIR / f"{patient_name}_{scenario_name}_insulin.csv",
+                    index=False,
                 )
                 results[(patient_name, scenario_name)] = result
     finally:
