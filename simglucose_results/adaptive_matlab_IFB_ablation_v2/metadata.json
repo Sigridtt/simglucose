@@ -1,0 +1,82 @@
+{
+  "controller_repo": "C:\\Users\\sigridtt\\OneDrive - NTNU\\Documents\\Master\\AdaptiveControllerMatLab",
+  "controller_commit": "9171432667984d04782006ceba88ffde52fb5ea1",
+  "controller_branch": "IFB",
+  "controller_uncommitted_changes": true,
+  "days": 10,
+  "seeds": [
+    1
+  ],
+  "meals": [
+    [
+      7,
+      45
+    ],
+    [
+      12,
+      70
+    ],
+    [
+      18,
+      80
+    ]
+  ],
+  "crash_mgdl": 10.0,
+  "configs": {
+    "V4": [
+      "adaptiveV4",
+      {}
+    ],
+    "V4_IFB": [
+      "adaptiveV4",
+      {
+        "ifb_enabled": true
+      }
+    ],
+    "V4_nocaps": [
+      "adaptiveV4",
+      {
+        "meal_loop_max_factor": Infinity,
+        "bolus_iob_risk_check": false
+      }
+    ],
+    "V4_nomealcap": [
+      "adaptiveV4",
+      {
+        "meal_loop_max_factor": Infinity
+      }
+    ],
+    "V4_noIOBrisk": [
+      "adaptiveV4",
+      {
+        "bolus_iob_risk_check": false
+      }
+    ],
+    "V4_IFB_nocaps": [
+      "adaptiveV4",
+      {
+        "ifb_enabled": true,
+        "meal_loop_max_factor": Infinity,
+        "bolus_iob_risk_check": false
+      }
+    ],
+    "780G": [
+      "adaptive780G",
+      {}
+    ],
+    "V4_AC240": [
+      "adaptiveV4",
+      {
+        "auto_corr_horizon_min": 240
+      }
+    ],
+    "780G_AC240": [
+      "adaptive780G",
+      {
+        "auto_corr_horizon_min": 240
+      }
+    ],
+    "BB": null
+  },
+  "run_at": "2026-10-21T11:39:17"
+}
