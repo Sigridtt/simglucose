@@ -29,7 +29,7 @@ import numpy as np
 import pandas as pd
 
 SIMGLUCOSE_ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab_v3_ablation_TDD_off"
+OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab_IFB_ablation"
 PARAMS = SIMGLUCOSE_ROOT / "simglucose" / "params"
 
 PATIENTS = ["child#001", "adolescent#001", "adult#001"]
@@ -113,7 +113,7 @@ def run(configs, patients, days, seed):
     from simglucose.simulation.env import T1DSimEnv
     from simglucose.simulation.scenario import CustomScenario
     from simglucose.simulation.sim_engine import SimObj
-    from simglucose_bridge import AdaptiveControllerV3, start_engine
+    from simglucose_bridge import AdaptiveController780G, start_engine
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     commit = subprocess.run(["git", "-C", str(first_test.BRIDGE_REPO), "rev-parse", "HEAD"],
@@ -138,7 +138,7 @@ def run(configs, patients, days, seed):
                                 InsulinPump.withName("Insulet"),
                                 CustomScenario(start_time=datetime(2020, 1, 1), scenario=meals))
                 kwargs = CONFIGS[config]
-                ctrl = BBController() if kwargs is None else AdaptiveControllerV3(engine, **kwargs)
+                ctrl = BBController() if kwargs is None else AdaptiveController780G(engine, **kwargs)
                 sim = SimObj(env, ctrl, timedelta(days=days), animate=False)
                 sim.simulate()
                 out = OUTPUT_DIR / config

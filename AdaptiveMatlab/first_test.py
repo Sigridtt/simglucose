@@ -10,7 +10,8 @@ import numpy as np
 import pandas as pd
 
 GITHUB_REPO_URL = "https://github.com/Sigridtt/AdaptiveControllerMatLab.git"
-GITHUB_REPO_BRANCH = "test"
+GITHUB_REPO_BRANCH = "IFB"
+#GITHUB_REPO_BRANCH = "test"
 GITHUB_CACHE = Path(tempfile.gettempdir()) / "AdaptiveControllerMatLab"
 
 
@@ -34,26 +35,22 @@ def fetch_github_repo():
         subprocess.run(
             [
                 "git", "-C", str(GITHUB_CACHE), "checkout", "-B",
-                GITHUB_REPO_BRANCH, f"origin/{GITHUB_REPO_BRANCH}",
+                GITHUB_REPO_BRANCH, "FETCH_HEAD",
             ],
             check=True,
         )
         subprocess.run(
             [
                 "git", "-C", str(GITHUB_CACHE), "reset", "--hard",
-                f"origin/{GITHUB_REPO_BRANCH}",
+                "FETCH_HEAD",
             ],
             check=True,
         )
     return GITHUB_CACHE
 
 
-# Select exactly one controller source. Comment the active line and uncomment
-# the other line when switching between the local checkout and GitHub.
-BRIDGE_REPO = Path(
-    r"C:\Users\sigridtt\OneDrive - NTNU\Documents\Master\AdaptiveControllerMatLab"
-)
-# BRIDGE_REPO = fetch_github_repo()
+# Select exactly one controller source. Use the fetched IFB branch from GitHub.
+BRIDGE_REPO = fetch_github_repo()
 
 CONTROLLER_REPO_URL = (
     GITHUB_REPO_URL if BRIDGE_REPO == GITHUB_CACHE else str(BRIDGE_REPO)
@@ -74,7 +71,7 @@ from simglucose_bridge import AdaptiveController, start_engine
 
 SIMGLUCOSE_ROOT = Path(__file__).resolve().parents[1]
 PATIENT_FILE = SIMGLUCOSE_ROOT / "simglucose" / "params" / "vpatient_params.csv"
-OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlabv4_TDD_off"
+OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab_IFB"
 
 PATIENTS = ["child#001", "adolescent#001", "adult#001"]
 DAYS = 10
@@ -123,7 +120,7 @@ def run_all(days=DAYS, seed=SEED):
                     InsulinPump.withName("Insulet"),
                     scenario,
                 )
-                controller = AdaptiveController(engine, controller="adaptiveV4")
+                controller = AdaptiveController(engine, controller="adaptive780G")
                 simulation = SimObj(
                     env,
                     controller,

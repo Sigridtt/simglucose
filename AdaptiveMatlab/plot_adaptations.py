@@ -23,7 +23,7 @@ SAMPLE_MIN = 5
 RESULTS_FOLDER = (
     Path(__file__).resolve().parents[1]
     / "simglucose_results"
-    / "adaptive_matlabv4"
+    / "adaptive_matlab_IFB"
 )
 
 
