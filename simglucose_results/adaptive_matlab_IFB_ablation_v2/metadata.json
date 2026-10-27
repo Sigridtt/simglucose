@@ -1,8 +1,8 @@
 {
-  "controller_repo": "C:\\Users\\sigridtt\\OneDrive - NTNU\\Documents\\Master\\AdaptiveControllerMatLab",
-  "controller_commit": "9171432667984d04782006ceba88ffde52fb5ea1",
+  "controller_repo": "https://github.com/Sigridtt/AdaptiveControllerMatLab.git",
+  "controller_commit": "7b05f58f3bec00b6dfe58cf06acb0e675b5c3448",
   "controller_branch": "IFB",
-  "controller_uncommitted_changes": true,
+  "controller_uncommitted_changes": false,
   "days": 10,
   "seeds": [
     1
@@ -78,5 +78,5 @@
     ],
     "BB": null
   },
-  "run_at": "2026-10-21T11:39:17"
+  "run_at": "2026-10-26T12:38:00"
 }

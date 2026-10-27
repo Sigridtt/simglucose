@@ -1,18 +1,21 @@
-"""Ablation runs for the 780G-like controller: which change does what?
+"""Ablation runs for the V4 and 780G controllers: which change does what?
 
-Each configuration changes one thing relative to adaptiveControllerV4 (no theta
-adaptation), using the controller overrides of the simglucose bridge; the
-adaptiveController780G preset must reproduce the combined configuration, and
+V4 configurations change one thing relative to adaptiveControllerV4 (no theta
+adaptation). The 780G configurations change one setting of the standalone
+adaptiveController780G (PID-IFB Auto Basal in incremental form, Auto
+Correction, meal bolus; no theta adaptation). The 780G controller is no
+longer a V4 preset, so 780G and V4_IFB_nocaps are different controllers.
 simglucose's basal-bolus controller is the baseline.
 
-    python AdaptiveMatlab/ablation_test.py
-    python AdaptiveMatlab/ablation_test.py --configs V4 V4_IFB 780G --seeds 1 2 3
-    python AdaptiveMatlab/ablation_test.py --reanalyze      # summary/plots from saved files only
+    python AdaptiveMatlab/IFB_ablation.py
+    python AdaptiveMatlab/IFB_ablation.py --configs 780G 780G_noIFB BB --seeds 1 2 3
+    python AdaptiveMatlab/IFB_ablation.py --reanalyze      # summary/plots from saved files only
 
-Needs AdaptiveControllerMatLab branch IFB (8b647f4 or later) plus the bridge
-controller overrides (ifb_enabled, meal_loop_max_factor, bolus_iob_risk_check,
-auto_corr_horizon_min). The controller source and commit (and whether the
-checkout had uncommitted changes) are written to metadata.json.
+Needs AdaptiveControllerMatLab branch IFB, commit f03725e ("bridge to
+simglucose") or later, for the controller overrides of the bridge
+(ifb_enabled, meal_loop_max_factor, bolus_iob_risk_check,
+auto_corr_horizon_min, cfg_overrides). The controller source and commit (and
+whether the checkout had uncommitted changes) are written to metadata.json.
 
 Metrics follow the International Consensus on Time in Range (Battelino et al.,
 Diabetes Care 2019): TIR 70-180, TBR <70 / <54, TAR >180 / >250 mg/dL, CV.
@@ -32,7 +35,7 @@ import numpy as np
 import pandas as pd
 
 SIMGLUCOSE_ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab_IFB_ablation_v2"
+OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "adaptive_matlab_IFB_ablation_v3"
 PARAMS = SIMGLUCOSE_ROOT / "simglucose" / "params"
 
 PATIENTS = ["child#001", "adolescent#001", "adult#001"]
@@ -52,10 +55,15 @@ CONFIGS = {
     "V4_nocaps": ("adaptiveV4", NOCAPS),                              # + both pig caps off only
     "V4_nomealcap": ("adaptiveV4", dict(meal_loop_max_factor=float("inf"))),
     "V4_noIOBrisk": ("adaptiveV4", dict(bolus_iob_risk_check=False)),
-    "V4_IFB_nocaps": ("adaptiveV4", dict(ifb_enabled=True, **NOCAPS)),  # = 780G preset
-    "780G": ("adaptive780G", {}),                                     # must equal V4_IFB_nocaps
+    "V4_IFB_nocaps": ("adaptiveV4", dict(ifb_enabled=True, **NOCAPS)),
     "V4_AC240": ("adaptiveV4", dict(auto_corr_horizon_min=240)),      # child-crash check
-    "780G_AC240": ("adaptive780G", dict(auto_corr_horizon_min=240)),
+    # standalone adaptiveController780G: one setting changed per configuration
+    "780G": ("adaptive780G", {}),                                     # defaults (UmaxSafeBG 3.5, AC horizon 2 h)
+    "780G_noIFB": ("adaptive780G", dict(cfg_overrides={"IFBGamma": 0.0})),        # PID only
+    "780G_noAC": ("adaptive780G", dict(auto_correction=False)),                    # no Auto Correction
+    "780G_AC240": ("adaptive780G", dict(auto_corr_horizon_min=240)),               # 4-h AC safety horizon
+    "780G_Umax30": ("adaptive780G", dict(cfg_overrides={"UmaxSafeBG": 3.0})),      # higher Umax
+    "780G_Umax39": ("adaptive780G", dict(cfg_overrides={"UmaxSafeBG": 3.9})),      # lower Umax
     "BB": None,
 }
 BOLUS_TYPES = {1: "meal", 2: "correction", 3: "autocorr"}
@@ -231,16 +239,6 @@ def load(seed, config, patient):
     return result, state
 
 
-def check_preset(summary):
-    """The 780G preset must reproduce V4_IFB_nocaps exactly (same seed / patient)."""
-    a = summary[(summary.config == "780G") & (summary.period == "all")].set_index(["seed", "patient"])
-    b = summary[(summary.config == "V4_IFB_nocaps") & (summary.period == "all")].set_index(["seed", "patient"])
-    common = a.index.intersection(b.index)
-    for key in common:
-        same = np.isclose(a.loc[key, "mean"], b.loc[key, "mean"]) and np.isclose(a.loc[key, "TDD"], b.loc[key, "TDD"])
-        print(f"780G == V4_IFB_nocaps for {key}: {same}")
-
-
 def analyze(configs, patients, seeds):
     tab = patient_table()
     rows, daily = [], {}
@@ -266,7 +264,6 @@ def analyze(configs, patients, seeds):
             "TAR250", "TDD", "loop_U_d", "meal_U_d", "autocorr_U_d", "meal_bolus_pct_of_CR",
             "loop_zero_pct", "ifb_on", "ifb_reduced_pct"]
     print(summary[summary.period == "days4-end"][[c for c in cols if c in summary]].to_string(index=False))
-    check_preset(summary)
 
     fig, axes = plt.subplots(1, len(patients), figsize=(6 * len(patients), 4.5), sharey=True, squeeze=False)
     for ax, patient in zip(axes[0], patients):

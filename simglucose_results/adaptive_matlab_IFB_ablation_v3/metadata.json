@@ -1,0 +1,112 @@
+{
+  "controller_repo": "https://github.com/Sigridtt/AdaptiveControllerMatLab.git",
+  "controller_commit": "f03725efa44653eff471cf1133f0567b8a6237d4",
+  "controller_branch": "IFB",
+  "controller_uncommitted_changes": false,
+  "days": 10,
+  "seeds": [
+    1
+  ],
+  "meals": [
+    [
+      7,
+      45
+    ],
+    [
+      12,
+      70
+    ],
+    [
+      18,
+      80
+    ]
+  ],
+  "crash_mgdl": 10.0,
+  "configs": {
+    "V4": [
+      "adaptiveV4",
+      {}
+    ],
+    "V4_IFB": [
+      "adaptiveV4",
+      {
+        "ifb_enabled": true
+      }
+    ],
+    "V4_nocaps": [
+      "adaptiveV4",
+      {
+        "meal_loop_max_factor": Infinity,
+        "bolus_iob_risk_check": false
+      }
+    ],
+    "V4_nomealcap": [
+      "adaptiveV4",
+      {
+        "meal_loop_max_factor": Infinity
+      }
+    ],
+    "V4_noIOBrisk": [
+      "adaptiveV4",
+      {
+        "bolus_iob_risk_check": false
+      }
+    ],
+    "V4_IFB_nocaps": [
+      "adaptiveV4",
+      {
+        "ifb_enabled": true,
+        "meal_loop_max_factor": Infinity,
+        "bolus_iob_risk_check": false
+      }
+    ],
+    "V4_AC240": [
+      "adaptiveV4",
+      {
+        "auto_corr_horizon_min": 240
+      }
+    ],
+    "780G": [
+      "adaptive780G",
+      {}
+    ],
+    "780G_noIFB": [
+      "adaptive780G",
+      {
+        "cfg_overrides": {
+          "IFBGamma": 0.0
+        }
+      }
+    ],
+    "780G_noAC": [
+      "adaptive780G",
+      {
+        "auto_correction": false
+      }
+    ],
+    "780G_AC240": [
+      "adaptive780G",
+      {
+        "auto_corr_horizon_min": 240
+      }
+    ],
+    "780G_Umax30": [
+      "adaptive780G",
+      {
+        "cfg_overrides": {
+          "UmaxSafeBG": 3.0
+        }
+      }
+    ],
+    "780G_Umax39": [
+      "adaptive780G",
+      {
+        "cfg_overrides": {
+          "UmaxSafeBG": 3.9
+        }
+      }
+    ],
+    "BB": null
+  },
+  "run_at": "2026-10-27T09:23:35"
+}
