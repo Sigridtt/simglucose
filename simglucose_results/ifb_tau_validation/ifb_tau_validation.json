@@ -1,0 +1,44 @@
+{
+  "fit_per_group": 8,
+  "split_seed": 0,
+  "tau_min": [
+    30.67245774851294,
+    79.02472682114045
+  ],
+  "fit_patients": [
+    "adolescent#003",
+    "adolescent#004",
+    "adolescent#005",
+    "adolescent#006",
+    "adolescent#007",
+    "adolescent#008",
+    "adolescent#009",
+    "adolescent#010",
+    "adult#001",
+    "adult#002",
+    "adult#003",
+    "adult#004",
+    "adult#005",
+    "adult#007",
+    "adult#009",
+    "adult#010",
+    "child#001",
+    "child#003",
+    "child#005",
+    "child#006",
+    "child#007",
+    "child#008",
+    "child#009",
+    "child#010"
+  ],
+  "validation_patients": [
+    "adolescent#001",
+    "adolescent#002",
+    "adult#006",
+    "adult#008",
+    "child#002",
+    "child#004"
+  ],
+  "fit_rms": 0.04104635222837907,
+  "validation_rms": 0.04973633847887047
+}
