@@ -39,6 +39,30 @@
     "child#002",
     "child#004"
   ],
-  "fit_rms": 0.04104635222837907,
-  "validation_rms": 0.04973633847887047
+  "fit_rms": 0.04104635222837914,
+  "validation_rms": 0.04973633847887036,
+  "identifiability": {
+    "starts": 32,
+    "converged_starts": 32,
+    "solutions_min": [
+      30.671386136732888,
+      79.02117059963665
+    ],
+    "solutions_max": [
+      30.67485110050521,
+      79.0257641967022
+    ],
+    "solution_spread_min": [
+      0.003464963772323415,
+      0.004593597065550625
+    ],
+    "jacobian_rank": 2,
+    "jacobian_singular_values": [
+      10.168314940989335,
+      1.2537008576886681
+    ],
+    "jacobian_condition_number": 8.110638896535265,
+    "log_tau_correlation": -0.9457954114213439,
+    "separately_identifiable": true
+  }
 }

@@ -1,0 +1,163 @@
+{
+  "chosen_tau_min": [
+    30.63213723538956,
+    79.68550167717149
+  ],
+  "chosen_sum_min": 110.31763891256105,
+  "chosen_t50_min": 90.0,
+  "chosen_t90_min": 220.0,
+  "error_all_fit": 0.04294777086251999,
+  "error_leave_one_out": 0.04441680584461908,
+  "leave_one_out_tau_short_range": [
+    30.221068741075786,
+    31.589290580526658
+  ],
+  "leave_one_out_tau_long_range": [
+    76.53284472067932,
+    80.34083474067987
+  ],
+  "literature": {
+    "tau_min": [
+      50.0,
+      70.0
+    ],
+    "source": "Loutseiko et al. 2011, appendix p. 1349 (dogs)",
+    "sum_min": 120.0,
+    "t50_min": 100.0,
+    "error": 0.05200311507639075
+  },
+  "error_group_leave_one_out": 0.04878627805052455,
+  "group_tau_min": {
+    "adult": [
+      31.935526337692174,
+      84.8216082995311
+    ],
+    "adolescent": [
+      29.497604604276052,
+      80.0702229353099
+    ],
+    "child": [
+      31.458640214334793,
+      73.25999490045052
+    ]
+  },
+  "error_oracle": 0.002027051439777303,
+  "simglucose_t50_min": {
+    "median": 90.0,
+    "min": 65.0,
+    "max": 145.0
+  },
+  "learning_curve": [
+    {
+      "n_train": 2,
+      "train": 0.023971167093095543,
+      "held_out": 0.05399120929053233
+    },
+    {
+      "n_train": 3,
+      "train": 0.039011702597926586,
+      "held_out": 0.0529144984392618
+    },
+    {
+      "n_train": 5,
+      "train": 0.034665341678225735,
+      "held_out": 0.05140826822209861
+    },
+    {
+      "n_train": 8,
+      "train": 0.04098037183899203,
+      "held_out": 0.04650685045572698
+    },
+    {
+      "n_train": 12,
+      "train": 0.04341411014530784,
+      "held_out": 0.04518359367544869
+    },
+    {
+      "n_train": 16,
+      "train": 0.04261051020558399,
+      "held_out": 0.04522104242505721
+    },
+    {
+      "n_train": 20,
+      "train": 0.042267509613518016,
+      "held_out": 0.04641307809392099
+    },
+    {
+      "n_train": 24,
+      "train": 0.0424834392807503,
+      "held_out": 0.0473300195968314
+    },
+    {
+      "n_train": 29,
+      "train": 0.04295292383693445,
+      "held_out": 0.04441680584461908
+    }
+  ],
+  "identifiability": {
+    "best_J": 0.003077772460456427,
+    "tol": 0.05,
+    "grid": [
+      5.0,
+      200.0
+    ],
+    "near_optimal_pairs": 263,
+    "near_optimal_shorter_range": [
+      20.0,
+      55.0
+    ],
+    "near_optimal_longer_range": [
+      54.0,
+      92.0
+    ],
+    "near_optimal_sum_range": [
+      106.0,
+      115.0
+    ],
+    "local_correlation_log_tau": -0.9448431976361868,
+    "fisher_condition_number": 65.3853514096808,
+    "bootstrap_samples": 200,
+    "quantities": {
+      "shorter tau": {
+        "estimate": 30.63213723538956,
+        "ci95": [
+          27.547990566905447,
+          34.57199969140766
+        ],
+        "bootstrap_precise": true,
+        "profile_closed": false,
+        "identifiable": false
+      },
+      "longer tau": {
+        "estimate": 79.68550167717149,
+        "ci95": [
+          71.47468143309212,
+          87.0027257279959
+        ],
+        "bootstrap_precise": true,
+        "profile_closed": false,
+        "identifiable": false
+      },
+      "sum S = tau_1 + tau_2": {
+        "estimate": 110.31763891256105,
+        "ci95": [
+          103.40309619101356,
+          119.36215065763498
+        ],
+        "bootstrap_precise": true,
+        "profile_closed": true,
+        "identifiable": true
+      },
+      "t50": {
+        "estimate": 90.0,
+        "ci95": [
+          85.0,
+          95.0
+        ],
+        "bootstrap_precise": true,
+        "profile_closed": true,
+        "identifiable": true
+      }
+    }
+  }
+}
