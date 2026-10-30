@@ -1,0 +1,29 @@
+ISF adaptation validation, mode sensitivity, illness days 7-11, reduction 0.2, controller 1abd5e0b62f8b6e6df36b334ac3301f3f350259a
+
+BG metrics per period (mg/dL, %):
+  patient             case  period  crashed  mean  min   max  TIR70_180  TBR70  TBR54  TAR180  TAR250
+adult#001       no_illness     pre    False 126.0 67.9 196.6       97.9    1.0    0.0     1.1     0.0
+adult#001       no_illness illness    False 134.0 76.7 211.8       94.8    0.0    0.0     5.2     0.0
+adult#001       no_illness    post    False 131.2 75.0 207.3       95.2    0.0    0.0     4.8     0.0
+adult#001       no_illness     all    False 129.7 67.9 211.8       96.2    0.4    0.0     3.4     0.0
+adult#001 illness_no_adapt     pre    False 125.5 67.9 190.7       98.1    1.0    0.0     0.9     0.0
+adult#001 illness_no_adapt illness    False 205.4 83.2 290.7       31.2    0.0    0.0    68.8    26.0
+adult#001 illness_no_adapt    post    False 125.8 58.7 200.8       94.6    2.4    0.0     3.0     0.0
+adult#001 illness_no_adapt     all    False 144.4 58.7 290.7       81.1    1.3    0.0    17.6     6.1
+adult#001       illness_BB     pre    False 122.1 68.6 194.8       98.1    1.1    0.0     0.8     0.0
+adult#001       illness_BB illness    False 205.0 81.1 285.9       21.4    0.0    0.0    78.6    21.9
+adult#001       illness_BB    post    False 119.2 58.8 179.1       96.4    3.6    0.0     0.0     0.0
+adult#001       illness_BB     all    False 140.6 58.8 285.9       79.5    1.7    0.0    18.8     5.1
+adult#001          illness     pre    False 126.0 67.9 196.6       97.9    1.0    0.0     1.1     0.0
+adult#001          illness illness    False 187.9 66.6 289.5       40.4    0.6    0.0    59.0    15.6
+adult#001          illness    post    False 116.2 46.7 184.4       91.0    8.6    2.0     0.4     0.0
+adult#001          illness     all    False 137.1 46.7 289.5       81.9    3.6    0.7    14.5     3.7
+
+ISF tracking:
+adult#001 (no illness): ISF at day 7 1.107, at the last midnight 1.137 (ISF_norm 1.027, min 0.903, max 1.027)
+adult#001: ISF at illness start 1.107
+  lowest ISF_norm during/after illness 0.431 (true plateau 0.20)
+  ISF_norm at the last midnight 0.952 (true 1.00)
+  days from illness start until ISF_norm <= 0.60 (half the change): 2
+  days from illness end until ISF_norm >= 0.60: 1
+  ISF_day_norm vs mean s of the same day (days 2-17): RMSE 0.087, mean error +0.009

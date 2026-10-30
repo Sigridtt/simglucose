@@ -1,0 +1,40 @@
+SIMC form comparison, illness days 7-11, factor 0.2, controller 67037482b336bc20c00e47bfceb21ba63b46bba0
+
+BG metrics per period (mg/dL, %):
+       patient     case  period  crashed  mean   min   max  TIR70_180  TBR70  TBR54  TAR180  TAR250
+     child#001   series     pre    False 124.8  17.0 287.3       69.8   13.9    6.4    16.2     3.5
+     child#001   series illness    False 227.1  76.3 418.4       37.5    0.0    0.0    62.5    42.1
+     child#001   series    post    False 134.1  50.3 301.7       72.3    9.1    0.8    18.6     3.0
+     child#001   series     all    False 152.1  17.0 418.4       63.1    9.0    2.9    27.9    12.4
+     child#001 parallel     pre    False 126.4  43.7 282.7       73.6   11.1    3.5    15.3     2.3
+     child#001 parallel illness    False 228.1  73.0 419.7       36.9    0.0    0.0    63.1    42.1
+     child#001 parallel    post    False 136.7  53.1 304.9       72.1    7.1    0.2    20.8     3.6
+     child#001 parallel     all    False 154.0  43.7 419.7       64.4    7.1    1.5    28.5    12.2
+     child#001 no_adapt     pre    False 123.3  17.0 306.6       69.1   15.4    7.3    15.4     4.3
+     child#001 no_adapt illness    False 198.6  25.9 386.7       47.7    1.8    1.5    50.5    26.2
+     child#001 no_adapt    post    False 121.3  30.3 267.5       75.4   12.4    4.4    12.2     0.4
+     child#001 no_adapt     all    False 140.3  17.0 386.7       66.3   11.2    4.9    22.5     8.1
+adolescent#001   series     pre    False 124.3 100.6 157.1      100.0    0.0    0.0     0.0     0.0
+adolescent#001   series illness    False 178.4 113.3 223.2       45.1    0.0    0.0    54.9     0.0
+adolescent#001   series    post    False 128.5 103.3 166.3      100.0    0.0    0.0     0.0     0.0
+adolescent#001   series     all    False 138.5 100.6 223.2       87.1    0.0    0.0    12.9     0.0
+adolescent#001 parallel     pre    False 124.2  96.5 157.1      100.0    0.0    0.0     0.0     0.0
+adolescent#001 parallel illness    False 178.5 118.3 223.2       44.9    0.0    0.0    55.1     0.0
+adolescent#001 parallel    post    False 128.6 103.5 166.5      100.0    0.0    0.0     0.0     0.0
+adolescent#001 parallel     all    False 138.5  96.5 223.2       87.0    0.0    0.0    13.0     0.0
+adolescent#001 no_adapt     pre    False 123.3 100.6 157.1      100.0    0.0    0.0     0.0     0.0
+adolescent#001 no_adapt illness    False 172.9 106.0 213.7       57.4    0.0    0.0    42.6     0.0
+adolescent#001 no_adapt    post    False 125.0 103.6 166.9      100.0    0.0    0.0     0.0     0.0
+adolescent#001 no_adapt     all    False 135.6 100.6 213.7       90.0    0.0    0.0    10.0     0.0
+     adult#001   series     pre    False 128.6  72.4 200.6       98.4    0.0    0.0     1.6     0.0
+     adult#001   series illness    False 196.1  93.9 288.8       37.6    0.0    0.0    62.4    14.8
+     adult#001   series    post    False 128.6  67.5 197.5       95.7    1.2    0.0     3.1     0.0
+     adult#001   series     all    False 144.5  67.5 288.8       83.1    0.4    0.0    16.4     3.5
+     adult#001 parallel     pre    False 128.2  72.1 194.5       98.6    0.0    0.0     1.4     0.0
+     adult#001 parallel illness    False 195.9  93.8 289.3       37.6    0.0    0.0    62.4    14.5
+     adult#001 parallel    post    False 128.4  67.6 197.7       95.8    1.2    0.0     3.1     0.0
+     adult#001 parallel     all    False 144.2  67.6 289.3       83.2    0.4    0.0    16.4     3.4
+     adult#001 no_adapt     pre    False 127.8  72.0 189.5       98.8    0.0    0.0     1.2     0.0
+     adult#001 no_adapt illness    False 205.2  87.8 288.8       29.8    0.0    0.0    70.2    24.7
+     adult#001 no_adapt    post    False 126.8  63.3 191.3       94.8    2.0    0.0     3.2     0.0
+     adult#001 no_adapt     all    False 145.7  63.3 288.8       81.1    0.7    0.0    18.2     5.8

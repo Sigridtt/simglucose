@@ -1,0 +1,40 @@
+{
+  "days": 17,
+  "illness_start_day": 7,
+  "illness_end_day": 11,
+  "reduction": 0.2,
+  "rat_multiplier": 1.0,
+  "ramp_fraction": 0.2,
+  "mode": "sensitivity",
+  "seed": 1,
+  "meals": [
+    [
+      7,
+      45
+    ],
+    [
+      12,
+      70
+    ],
+    [
+      18,
+      80
+    ]
+  ],
+  "patients": [
+    "adolescent#001",
+    "adult#001",
+    "child#001"
+  ],
+  "cases": [
+    "illness",
+    "illness_BB",
+    "illness_no_adapt",
+    "no_illness"
+  ],
+  "run_at": "2026-10-29T15:39:27",
+  "controller_repo": "https://github.com/Sigridtt/AdaptiveControllerMatLab.git",
+  "controller_commit": "cdbee7257cf7e77d61671afa8ca86159df88ec3e",
+  "controller_branch": "IFB",
+  "controller_uncommitted_changes": false
+}
