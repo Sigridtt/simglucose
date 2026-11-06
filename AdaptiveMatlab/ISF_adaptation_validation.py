@@ -1,4 +1,4 @@
-"""Simulations for the validation of the midnight ISF adaptation (midnights.m)
+﻿"""Simulations for the validation of the midnight ISF adaptation (midnights.m)
 of adaptiveController780G against a known change in the insulin sensitivity of
 a simglucose patient. Plots and metrics: ISF_validation_plot.py.
 
@@ -70,15 +70,20 @@ PATIENTS = [
 ]
 CASES_TO_RUN = [
     "illness",              # 780G, illness, ISF adapted
-    "no_illness",           # 780G, no illness, ISF adapted
+    #"no_illness",           # 780G, no illness, ISF adapted
     "illness_no_adapt",     # 780G, illness, ISF not updated
     "illness_BB",           # simglucose basal-bolus controller, illness
+
+]
+LAMBDA_DAYS = [
+                        # forgetting factor between days (cfg.ISFLambdaDay); today's share 42 %
+    0.3,                    # today's share 70 %
 ]
 # ==========================================================================
 
 SIMGLUCOSE_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(SIMGLUCOSE_ROOT))
-OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "ISF_adaptation_validation" /"0.2_reduction_Umax_adapted_saved6daysestimate"
+OUTPUT_DIR = SIMGLUCOSE_ROOT / "simglucose_results" / "ISF_adaptation_validation" /"fuzzy_logic_bolusbasal"
 
 DAYS = 17
 ILLNESS_START_DAY = 7
@@ -126,7 +131,7 @@ def state_array(state, name):
     return np.atleast_2d(np.asarray(state[name], dtype=float))
 
 
-def simulate(patients, cases, args, out_dir):
+def simulate(patients, cases, args, out_dir, lambda_day):
     from simglucose.actuator.pump import InsulinPump
     from simglucose.controller.basal_bolus_ctrller import BBController
     from simglucose.patient.t1dpatient import T1DPatient
@@ -155,14 +160,18 @@ def simulate(patients, cases, args, out_dir):
         "days": args.days, "illness_start_day": args.illness_start, "illness_end_day": args.illness_end,
         "reduction": args.reduction, "rat_multiplier": args.rat if args.mode == "loop" else 1.0,
         "ramp_fraction": RAMP_FRACTION, "mode": args.mode, "seed": args.seed, "meals": MEALS,
+        "isf_lambda_day": lambda_day,
         "patients": sorted(set(old.get("patients", [])) | set(patients)),
         "cases": sorted(set(old.get("cases", [])) | set(cases)),
         "run_at": datetime.now().isoformat(timespec="seconds"),
     }
-    for k in ("days", "illness_start_day", "illness_end_day", "reduction", "mode", "seed"):
+    for k in ("days", "illness_start_day", "illness_end_day", "reduction", "mode", "seed", "isf_lambda_day"):
         if k in old and old[k] != meta[k]:
             raise ValueError(f"{mpath} was made with {k} = {old[k]}, this run has {meta[k]}; "
                              "use the same settings or another --out-dir")
+    if need_matlab and old.get("controller_commit") not in (None, source.get("commit")):
+        raise ValueError(f"{mpath} was made with controller {old['controller_commit'][:7]}, "
+                         f"this run uses {source.get('commit', '?')[:7]}; use another --out-dir")
     if need_matlab:
         meta.update({"controller_repo": repo_url, **{f"controller_{k}": v for k, v in source.items()}})
     else:                                                  # keep the controller info of earlier 780G runs
@@ -178,14 +187,15 @@ def simulate(patients, cases, args, out_dir):
             rat = args.rat if (ill and args.mode == "loop") else 1.0
             name = patient + CASES[case]
             print(f"Running {patient} / {case} ({args.days} days, illness days {args.illness_start}-"
-                  f"{args.illness_end}, plateau factor {reduction}, mode {args.mode})")
+                  f"{args.illness_end}, plateau factor {reduction}, mode {args.mode})" f", lambda {lambda_day}")
             scenario = build_scenario(args.days, args.illness_start, args.illness_end, reduction, rat)
             env = T1DSimEnv(T1DPatient.withName(patient), CGMSensor.withName("GuardianRT", seed=args.seed),
                             InsulinPump.withName("Insulet"), scenario)
             if case == "illness_BB":
                 ctrl = BBController()                        # simglucose baseline
             else:
-                ctrl = AdaptiveController(engine, controller="adaptive780G", adaptation=adapt)
+                ctrl = AdaptiveController(engine, controller="adaptive780G", adaptation=adapt,
+                                          cfg_overrides={"ISFLambdaDay": lambda_day})
             prm = env.patient._params
             base = {k: float(prm[k]) for k in ("Vmx", "kp3", "p2u", "f")}
 
@@ -243,9 +253,12 @@ def main():
     cases = args.cases or CASES_TO_RUN
     if not patients or not cases:
         raise SystemExit("no patients or no cases selected (see the SELECTION block)")
-    out_dir = Path(args.out_dir) if args.out_dir else OUTPUT_DIR / args.mode
-    simulate(patients, cases, args, out_dir)
-    print(f"done; plots: python AdaptiveMatlab/ISF_validation_plot.py --out-dir \"{out_dir}\"")
+    base_dir = Path(args.out_dir) if args.out_dir else OUTPUT_DIR / args.mode
+    for lam in LAMBDA_DAYS:
+        out_dir = base_dir / f"lambda_{lam}"
+        print(f"=== ISFLambdaDay {lam} -> {out_dir}")
+        simulate(patients, cases, args, out_dir, lam)
+    print(f"done; compare: python AdaptiveMatlab/ISF_lambda_compare_plot.py --base-dir \"{base_dir}\"")
 
 
 if __name__ == "__main__":

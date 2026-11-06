@@ -1,0 +1,57 @@
+{
+  "controller_repo": "https://github.com/Sigridtt/AdaptiveControllerMatLab.git",
+  "controller_commit": "e57d1ee5f152447c1cce85f0a68e44114a874d75",
+  "controller_branch": "IFB",
+  "controller_uncommitted_changes": false,
+  "days": 17,
+  "illness_start_day": 7,
+  "illness_end_day": 11,
+  "reduction": 0.2,
+  "ramp_fraction": 0.2,
+  "seed": 1,
+  "meals": [
+    [
+      7,
+      45
+    ],
+    [
+      12,
+      70
+    ],
+    [
+      18,
+      80
+    ]
+  ],
+  "patients": [
+    "child#001",
+    "adolescent#001",
+    "adult#001"
+  ],
+  "cases": [
+    "adapt",
+    "adapt_no_filter",
+    "no_adapt"
+  ],
+  "case_settings": {
+    "adapt": {
+      "adaptation": true,
+      "cfg_overrides": {
+        "PIDFilterCGM": true
+      }
+    },
+    "adapt_no_filter": {
+      "adaptation": true,
+      "cfg_overrides": {
+        "PIDFilterCGM": false
+      }
+    },
+    "no_adapt": {
+      "adaptation": false,
+      "cfg_overrides": {
+        "PIDFilterCGM": true
+      }
+    }
+  },
+  "run_at": "2026-10-30T11:49:05"
+}

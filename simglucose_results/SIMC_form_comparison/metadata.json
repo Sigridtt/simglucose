@@ -1,6 +1,6 @@
 {
   "controller_repo": "https://github.com/Sigridtt/AdaptiveControllerMatLab.git",
-  "controller_commit": "67037482b336bc20c00e47bfceb21ba63b46bba0",
+  "controller_commit": "3d22b108d161759f6dd1cbac8818798fb5edc507",
   "controller_branch": "IFB",
   "controller_uncommitted_changes": false,
   "days": 17,
@@ -34,5 +34,5 @@
     "no_adapt"
   ],
   "no_adapt_form": "series",
-  "run_at": "2026-10-30T10:37:32"
+  "run_at": "2026-10-30T11:12:36"
 }
